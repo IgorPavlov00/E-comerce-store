@@ -1,0 +1,32 @@
+<div class="parent-container">
+  <div class="header">
+    <h1>What we offer</h1>
+  </div>
+</div>
+<div class="feature-card-wrapper">
+  <div class="feature-card" *ngFor="let p of alljeans">
+    <!-- ***** Feature Card Start ***** -->
+    <div class="feature-card-container">
+      <img src="{{p.imagePath}}" alt="Shipping">
+      <div class="text-content">
+        <h3>{{p.name}}</h3>
+        <p> size:{{p.size}}</p>
+        <p>{{p.price}} $</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="feature-card-wrapper">
+  <div class="feature-card" *ngFor="let p of womensClothing">
+    <!-- ***** Feature Card Start ***** -->
+    <div class="feature-card-container">
+      <img src="{{p.image}}" alt="Shipping">
+      <div class="text-content">
+        <h3>{{p.title}}</h3>
+        <p>{{p.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>

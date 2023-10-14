@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HerobannerComponent } from './herobanner/herobanner.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FeatureComponent } from './feature/feature.component';
+import { ProductsComponent } from './products/products.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { FeatureComponent } from './feature/feature.component';
     NavbarComponent,
     HerobannerComponent,
     CategoriesComponent,
-    FeatureComponent
+    FeatureComponent,
+    ProductsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,3 @@
-body {
-  background: #eee;
-  min-height: 3000px;
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-}
-
 .container {
   width: 80%;
   margin: 0 auto;
@@ -34,6 +26,7 @@ nav {
 nav.scrollUp {
   transform: translateY(-80px);
 }
+
 nav ul.navbar-menu {
   margin: 0;
   padding: 0;
@@ -41,26 +34,46 @@ nav ul.navbar-menu {
   float: right;
   font-family: "Poppins", sans-serif;
 }
+
 nav ul.navbar-menu li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 20px;
   font-family: "Poppins", sans-serif;
 }
+
 nav ul.navbar-menu li a {
   color: white;
   font-size: 34px;
   font-family: 'Aryzena', sans-serif;
-
-
+  position: relative; /* Added */
 }
+
+nav ul.navbar-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: white;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+nav ul.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
 nav a#brand {
   text-transform: uppercase;
-  foat: left;
+  float: left; /* Corrected the typo: foat to float */
   color: white;
   font-weight: 800;
   font-size: 20px;
-   font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
 nav button {
   background: none;
   width: 30px;
@@ -72,6 +85,7 @@ nav button {
   cursor: pointer;
   display: none;
 }
+
 nav button span {
   width: 30px;
   height: 40px;
