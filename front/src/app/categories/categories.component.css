@@ -1,0 +1,77 @@
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:30px
+}
+
+.category-card {
+  position: relative;
+  border-radius: 10px;
+  margin: 10px;
+  overflow: hidden;
+  max-width: calc(25% - 20px); /* Adjust as needed */
+
+  flex-grow: 1; /* Allow cards to grow within the container */
+  left: 13%;
+
+
+}
+
+.category-card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  width: 500px; /* Set a fixed width */
+  height: 400px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image covers the entire space */
+  align-items: center;
+  transition: transform 0.3s; /* Add transition for smooth effect */
+}
+
+.category-card img:hover {
+  transform: scale(1.1); /* Zoom in on hover */
+  filter: brightness(70%);
+
+  transition: transform 0.3s, filter 0.3s; /* Add transition for both properties */
+}
+
+
+.category-card h3 {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+
+  font-style: italic;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0;
+  font-size: 20px;
+}
+.white-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 26px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-decoration: none;
+  font-family: 'Aryzena', sans-serif;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #d53b3b;
+}
+
+
+
+
+
