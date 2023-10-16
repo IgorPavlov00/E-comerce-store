@@ -29,7 +29,7 @@ public abstract class Product {
     private String imagePath;
     private String gender;
     private double price;
-
+    private String type;
 
 
 

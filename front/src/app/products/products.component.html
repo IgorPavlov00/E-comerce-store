@@ -1,32 +1,48 @@
 <div class="parent-container">
   <div class="header">
-    <h1>What we offer</h1>
+    <h1>Featured products</h1>
   </div>
 </div>
-<div class="feature-card-wrapper">
-  <div class="feature-card" *ngFor="let p of alljeans">
-    <!-- ***** Feature Card Start ***** -->
-    <div class="feature-card-container">
-      <img src="{{p.imagePath}}" alt="Shipping">
-      <div class="text-content">
-        <h3>{{p.name}}</h3>
-        <p> size:{{p.size}}</p>
-        <p>{{p.price}} $</p>
+<div class="container">
+    <div class="custom-shape-divider-top-1697362567">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+<div class="wrapper" *ngFor="let p of alljeans">
+  <div class="product-img">
+    <img src="{{p.imagePath}}" height="320" width="320">
+  </div>
+  <div class="product-info">
+    <div class="product-text">
+      <h1>{{p.name}}</h1>
+      <h2>{{p.brand}}</h2>
+      <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
+    </div>
+    <div class="product-price-btn">
+      <p><span>{{p.price}}</span>$</p>
+      <button type="button" routerLink="/details/{{p.id}}" > buy now</button>
+
+    </div>
+  </div>
+</div>
+  <div class="wrapper" *ngFor="let p of allshoes">
+    <div class="product-img">
+      <img src="{{p.imagePath}}" height="320" width="250">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1>{{p.name}}</h1>
+        <h2>{{p.description}}</h2>
+        <p>Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
+      </div>
+      <div class="product-price-btn">
+        <p><span>{{p.price}}</span>$</p>
+        <button type="button" routerLink="/details/{{p.id}}">buy now</button>
+
       </div>
     </div>
   </div>
 </div>
 
 
-<div class="feature-card-wrapper">
-  <div class="feature-card" *ngFor="let p of womensClothing">
-    <!-- ***** Feature Card Start ***** -->
-    <div class="feature-card-container">
-      <img src="{{p.image}}" alt="Shipping">
-      <div class="text-content">
-        <h3>{{p.title}}</h3>
-        <p>{{p.price}}</p>
-      </div>
-    </div>
-  </div>
-</div>

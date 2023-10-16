@@ -16,3 +16,9 @@ INSERT INTO jeans (name, description, brand, size, color, price, gender, image_p
 VALUES ('Denim 32 Fit Jeans', 'Perfect fit denim jeans', 'Denim', '32', 'Blue', 85.00, 'male', 'assets/images/denim-32-fit.jpg');
 INSERT INTO jeans (name, description, brand, size, color, price, gender, image_path)
 VALUES ('Diesel 34 Grey Jeans', 'Stylish Diesel grey jeans', 'Diesel', '34', 'Grey', 95.00, 'male', 'assets/images/diesel_34_grey.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
+VALUES ('Air 1 Jordan mid', 'Smokey grey', 'Jordan', '42', 'Grey', 95.00, 'male', 'assets/images/jordan-1.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
+VALUES ('Air 1 Jordan high', 'University blue', 'Jordan', '44', 'Blue', 80.00, 'male', 'assets/images/jordan-2-blue.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
+VALUES ('Air 1 Jordan high', 'Spiderman:Origin Story', 'Jordan', '43', 'Red', 100.00, 'male', 'assets/images/jordan-3-red.jpg');

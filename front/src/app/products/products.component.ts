@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {ProductService} from "../product.service";
+import {Product, ProductService} from "../product.service";
+import {NavbarComponent} from "../navbar/navbar.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-products',
@@ -9,17 +12,27 @@ import {ProductService} from "../product.service";
 export class ProductsComponent {
   mensClothing: any[] = [];
   womensClothing: any[] = [];
-  alljeans: any[] = [];
+  alljeans: Product[] = [];
+  allshoes: Product[] = [];
   image:any
 
-  constructor(private productService: ProductService) { }
+
+  constructor(private productService: ProductService,private route: ActivatedRoute,private router: Router, private httpclient: HttpClient) {
+  }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(data => {
-      this.alljeans = data;
-
+    this.productService.getJeans().subscribe(data => {
+      this.alljeans = data.slice(9,12);
       console.log(this.alljeans)
+    });
+    this.productService.getShoes().subscribe(data => {
+      this.allshoes=data.slice(0,3);
+      console.log(this.allshoes)
     });
 
   }
+
+
+
+
 }

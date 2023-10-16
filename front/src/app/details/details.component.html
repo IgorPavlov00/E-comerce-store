@@ -1,0 +1,128 @@
+
+<app-navbar></app-navbar>
+<main>
+
+
+
+
+
+  <div class="container" *ngIf="prod">
+
+
+
+    <nav class="breadcrumb">
+      <ol class="breadcrumb-content">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">{{prod.name}}</a></li>
+        <li class="breadcrumb-item active">{{prod.description}}</li>
+      </ol>
+    </nav>
+
+    <div class="product-main">
+
+      <div class="product-content">
+
+        <div class="product-media">
+          <div class="product-image">
+            <img class="active" src="{{prod.imagePath}}" alt="...">
+          </div>
+
+          <div class="product-thumb">
+            <div class="thumb-item">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/81J7k2APs9L._AC_SL1500_.jpg" alt="...">
+            </div>
+            <div class="thumb-item">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/81OX7mh54wL._AC_SL1500_.jpg" alt="...">
+            </div>
+            <div class="thumb-item">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/819F38EBG3L._AC_SL1500_.jpg" alt="...">
+            </div>
+            <div class="thumb-item">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/81J04QuVMVL._AC_SL1500_.jpg" alt="...">
+            </div>
+          </div>
+        </div>
+
+        <div class="product-desc">
+
+          <div class="desc-header">
+            <div class="rating">
+              <svg class="icon icon-star rating">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+              <svg class="icon icon-star rating">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+              <svg class="icon icon-star rating">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+              <svg class="icon icon-star">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+              <svg class="icon icon-star">
+                <use xlink:href="#icon-star"></use>
+              </svg>
+              <span>Favorite (9)</span>
+            </div>
+
+            <h1>{{prod.name}}</h1>
+
+            <div class="price">
+              <span class="price-old">{{prod.price}}</span>
+              <span class="price-new">19.20 £ tac incl.</span>
+              <span class="price-discount">-20%</span>
+            </div>
+          </div>
+
+          <div class="desc-content">
+						<span>
+							<h4>Available in sizes:</h4>
+							<p>{{prod.size}}</p>
+						</span>
+            <span>
+							<h4>colors:</h4>
+							<p>{{prod.color}}</p>
+						</span>
+
+          </div>
+
+          <div class="product-type">
+            <div class="item product-type-color">
+              <label for="product-type-color">Color</label>
+              <select id="product-type-color" name="color">
+                <option>Any</option>
+                <option selected>Dark Steel</option>
+                <option>Matt Black</option>
+              </select>
+            </div>
+
+            <div class="item product-type-size">
+              <label for="product-type-size">Height</label>
+              <select id="product-type-size" name="size">
+                <option>Any</option>
+                <option selected>40 cm</option>
+                <option>50 cm</option>
+              </select>
+            </div>
+
+            <div class="item product-type-qty">
+              <label for="product-type-qty">Qty</label>
+              <select id="product-type-qty" name="qty">
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+<p>details</p>
+

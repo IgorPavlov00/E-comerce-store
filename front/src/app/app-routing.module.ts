@@ -11,34 +11,26 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { BrandComponent } from './brand/brand.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
-import { AppRoutingModule } from './app-routing.module';
-import {RouterModule} from "@angular/router";
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { Location } from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 
+
+const routes: Routes = [
+  {
+
+    path: '', component: LandingPageComponent
+
+  },
+  {
+    path: 'details/:id', component: DetailsComponent
+  },
+
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HerobannerComponent,
-    CategoriesComponent,
-    FeatureComponent,
-    ProductsComponent,
-    BrandComponent,
-    FooterComponent,
-    DetailsComponent,
-    LandingPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    RouterModule,
-
-  ],
-  providers: [Location],
-  bootstrap: [AppComponent]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppModule { }
+export class AppRoutingModule {
+}

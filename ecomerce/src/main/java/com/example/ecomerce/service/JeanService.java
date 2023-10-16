@@ -22,5 +22,7 @@ public class JeanService {
         return jeanRepository.findById(id).orElse(null);
     }
 
+
+
     // Add more methods as needed
 }

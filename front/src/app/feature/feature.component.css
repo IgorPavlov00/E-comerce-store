@@ -1,3 +1,6 @@
+
+
+
 .feature-card-wrapper {
   display: flex;
   justify-content: center;
@@ -29,12 +32,14 @@
   max-height: 40%;
   object-fit: cover;
   margin-left: 100px;
+  margin-top: 30px;
 }
 
 .text-content {
   padding: 20px;
   text-align: center;
   background-color: #fff;
+  font-family: PType Display,sans-serif;
 }
 
 .text-content h3 {
@@ -47,4 +52,5 @@
   font-size: 16px;
   margin: 0;
   font-family: PType Display,sans-serif;
+
 }

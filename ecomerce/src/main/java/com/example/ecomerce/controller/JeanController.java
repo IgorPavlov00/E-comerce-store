@@ -3,6 +3,7 @@ package com.example.ecomerce.controller;
 import com.example.ecomerce.model.Jeans;
 import com.example.ecomerce.service.JeanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,9 @@ public class JeanController {
     }
 
     @GetMapping("/{id}")
-    public Jeans getJeanById(@PathVariable Long id) {
-        return jeanService.getJeanById(id);
+    public ResponseEntity<Jeans> getJeansById(@PathVariable Long id) {
+        Jeans jeans = jeanService.getJeanById(id);
+        return ResponseEntity.ok(jeans);
     }
 
     // Add more endpoints as needed
