@@ -8,17 +8,11 @@ import {UserRegister} from "./UserRegister";
   providedIn: 'root'
 })
 export class UserRegisterService {
-  private loginUrl: string;
+  private apiUrl: string = 'http://localhost:8084/users/register';
 
-  constructor(private http: HttpClient) {
-    this.loginUrl = "http://localhost:8084/register";
-  }
+  constructor(private http: HttpClient) {}
 
-  registerUser(user: UserRegister): Observable<object> {
-    console.log(user);
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-    return this.http.post<UserRegister>(this.loginUrl, JSON.stringify(user), httpOptions);
+  registerUser(user: UserRegister): Observable<string> {
+    return this.http.post<string>(this.apiUrl, user);
   }
 }

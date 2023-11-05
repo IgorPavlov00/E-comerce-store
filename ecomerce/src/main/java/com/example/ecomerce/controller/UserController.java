@@ -18,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -43,6 +44,28 @@ public class UserController {
 //    }
 
 
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> registerUser(@RequestBody RegisterDTO user) {
+        System.out.println(user);
+        User k = new User(user);
+        k.setAktivan(false);
+        this.userService.save(k);
+//        String token = UUID.randomUUID().toString();
+
+        // Save the token, email, and timestamp in the database
+//        userService.createVerificationToken(k, token);
+
+        // Send the email with the link
+
+        emailSenderService.sendSimpleEmail(k.getEmail(),"Aktivirajte vas nalog","Aktivirajte vas nalog");
+        return ResponseEntity.ok(k);
+    }
+
+//    @PostMapping("/register")
+//    public ResponseEntity<String> registerUser(@RequestBody User user) {
+//        userService.save(user);
+//        return ResponseEntity.ok("User registered successfully!");
+//    }
 
 //    @GetMapping(value = "/confirm", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<?> confirmEmail(@RequestParam("token") String token) {

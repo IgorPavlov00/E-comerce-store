@@ -1,14 +1,19 @@
 package com.example.ecomerce.model;
 
 import com.example.ecomerce.dto.RegisterDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
 
-@Data
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
 @Entity
+@Getter
+@Setter
+@ToString
+@Table(name = "users") // Specify a custom table name, e.g., "users"
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,5 +92,6 @@ public class User {
     public void setAktivan(Boolean aktivan) {
         this.aktivan = aktivan;
     }
+
 
 }

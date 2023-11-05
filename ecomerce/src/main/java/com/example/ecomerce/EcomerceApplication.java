@@ -24,13 +24,13 @@ public class EcomerceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EcomerceApplication.class, args);
 	}
-	@EventListener(ApplicationReadyEvent.class)
-	public void triggerMail() throws MessagingException {
-		service.sendSimpleEmail("igorpavlov106@gmail.com",
-				"This is email body",
-				"This is email subject");
-
-	}
+//	@EventListener(ApplicationReadyEvent.class)
+//	public void triggerMail() throws MessagingException {
+//		service.sendSimpleEmail("igorpavlov106@gmail.com",
+//				"This is email body",
+//				"This is email subject");
+//
+//	}
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();

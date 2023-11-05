@@ -16,11 +16,16 @@ export class LoginRegisterComponent implements OnInit {
   registerBtn!: HTMLElement;
   loginBtn!: HTMLElement;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private userRegisterService: UserRegisterService) { }
+  user: UserRegister = new UserRegister();
 
+  constructor(private userRegisterService: UserRegisterService) {}
+
+  register() {
+    this.userRegisterService.registerUser(this.user).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
+  }
 
   ngOnInit(): void {
     this.container = document.getElementById('container')!;
@@ -36,14 +41,5 @@ export class LoginRegisterComponent implements OnInit {
     });
   }
 
-  user:UserRegister=new UserRegister();
-  pass:String='';
 
-
-  register() {
-    console.log(this.user);
-    console.log(this.pass);
-    this.userRegisterService.registerUser(this.user).subscribe(result => this.router.navigate(['/login']));
-
-  }
 }
