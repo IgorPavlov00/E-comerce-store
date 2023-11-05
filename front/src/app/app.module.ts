@@ -15,6 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { Location } from '@angular/common';
+import { LoginRegisterComponent } from './login-register/login-register.component';
+import {FormsModule} from "@angular/forms";
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 
@@ -29,13 +32,17 @@ import { Location } from '@angular/common';
     BrandComponent,
     FooterComponent,
     DetailsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    LoginRegisterComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
+    FormsModule,
+
 
   ],
   providers: [Location],

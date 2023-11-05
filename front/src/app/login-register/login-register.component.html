@@ -1,14 +1,14 @@
-
+<div class="c">
 <div class="container" id="container">
   <div class="form-container sign-up">
-    <form>
+    <form (ngSubmit)="register()">
       <h1>Create Account</h1>
 
 
-      <input type="text" placeholder="Name">
-      <input type="text" placeholder="Last Name">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
+      <input type="text" placeholder="Name" name="name" [ngModel]="user.name">
+      <input type="text" placeholder="Last Name" name="lastname" [ngModel]="user.lastname">
+      <input type="email" placeholder="Email" name="email" [ngModel]="user.email">
+      <input type="password" placeholder="Password" name="password" [ngModel]="user.password">
       <button>Sign Up</button>
     </form>
   </div>
@@ -37,4 +37,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

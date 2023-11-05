@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 
-body{
-  background-color: #d53b3b;
+.c {
+  background-color: navajowhite;
+  height: 100%;
+  font-family: 'Aryzena', sans-serif;
 }
 *{
   margin: 0;
@@ -23,8 +25,8 @@ body{
   max-width: 100%;
   min-height: 480px;
   top: 20%;
-  left: 25%;
-  right: 20%;
+  align-items: flex-start;
+  left: 30%;
 }
 
 .container p{
@@ -190,6 +192,7 @@ body{
 
 .toggle-right{
   right: 0;
+  bottom: 10%;
   transform: translateX(0);
 }
 

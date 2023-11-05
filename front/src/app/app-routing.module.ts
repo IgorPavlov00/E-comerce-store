@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DetailsComponent } from './details/details.component';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
+import {LoginRegisterComponent} from "./login-register/login-register.component";
 
 
 
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'details/:id', component: DetailsComponent
+  },
+  {
+    path: 'login', component: LoginRegisterComponent
   },
 
 ];

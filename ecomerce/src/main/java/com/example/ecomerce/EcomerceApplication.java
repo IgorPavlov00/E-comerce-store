@@ -1,9 +1,14 @@
 package com.example.ecomerce;
 
+import com.example.ecomerce.email.EmailSenderService;
+import jakarta.mail.MessagingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -14,11 +19,18 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class EcomerceApplication {
-
+	@Autowired
+	private EmailSenderService service;
 	public static void main(String[] args) {
 		SpringApplication.run(EcomerceApplication.class, args);
 	}
+	@EventListener(ApplicationReadyEvent.class)
+	public void triggerMail() throws MessagingException {
+		service.sendSimpleEmail("igorpavlov106@gmail.com",
+				"This is email body",
+				"This is email subject");
 
+	}
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
