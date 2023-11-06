@@ -2,6 +2,7 @@
   width: 80%;
   margin: 0 auto;
   clear: both;
+
 }
 
 a {
@@ -11,7 +12,7 @@ a {
 }
 
 nav {
-  background: transparent; /* Change the background to transparent */
+  background-image: linear-gradient(to left, #d53b3b, #f35454);
   box-shadow: none; /* Remove the box shadow */
   height: 80px;
   line-height: 80px;
@@ -51,7 +52,7 @@ nav ul.navbar-menu li a {
 nav ul.navbar-menu li a::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 10;
   left: 50%;
   transform: translateX(-50%);
   width: 0;

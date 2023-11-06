@@ -18,13 +18,15 @@ export class LoginRegisterComponent implements OnInit {
 
   user: UserRegister = new UserRegister();
 
-  constructor(private userRegisterService: UserRegisterService) {}
+  constructor(private userRegisterService: UserRegisterService,private route: ActivatedRoute,
+              private router: Router) {}
 
   register() {
     this.userRegisterService.registerUser(this.user).subscribe(
       response => console.log(response),
       error => console.error(error)
     );
+    this.router.navigate(['/verify'])
   }
 
   ngOnInit(): void {

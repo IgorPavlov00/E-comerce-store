@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserRegister} from "./UserRegister";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Injectable({
@@ -14,5 +15,6 @@ export class UserRegisterService {
 
   registerUser(user: UserRegister): Observable<string> {
     return this.http.post<string>(this.apiUrl, user);
+
   }
 }
