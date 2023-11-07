@@ -89,25 +89,27 @@
 --     (3, 'SH3000', 'Sneakers', 'Comfortable sneakers', 'Nike', '42', 'Black', 90.00, 'male', 'assets/images/sneakers.jpg');
 -- -- Add more shoes data here...
 -- Insert statements for jeans
-INSERT INTO jeans (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Levi''s 30 Khaki Jeans', 'Stylish Levi''s khaki jeans', 'Levi''s', '30', 'Khaki', 80.00, 'male', 'assets/images/levis-30-khaki.jpg');
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Levi''s 30 Khaki Jeans', 'Stylish Levi''s khaki jeans', 'Levi''s', '30', 'Khaki', 80.00,'jean', 'male', 'assets/images/levis-30-khaki.jpg');
 
-INSERT INTO jeans (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Levi''s 31 Taper Jeans', 'Levi''s tapered fit jeans', 'Levi''s', '31', 'Blue', 90.00, 'male', 'assets/images/levis-31-taper.jpg');
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Levi''s 31 Taper Jeans', 'Levi''s tapered fit jeans', 'Levi''s', '31', 'Blue', 90.00,'jean', 'male', 'assets/images/levis-31-taper.jpg');
 
-INSERT INTO jeans (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Levi''s 32 Cargo Jeans', 'Levi''s cargo style jeans', 'Levi''s', '32', 'Green', 95.00, 'male', 'assets/images/levis-32-cargo.jpg');
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Levi''s 32 Cargo Jeans', 'Levi''s cargo style jeans', 'Levi''s', '32', 'Green', 95.00,'jean', 'male', 'assets/images/levis-32-cargo.jpg');
 
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Levi''s 32 Hybrid Cargo Jeans', 'Levi''s hybrid cargo style jeans', 'Levi''s', '32', 'Black', 95.00,'jean', 'male', 'assets/images/levis-32-hybrid-cargo.jpg');
 -- Add more insert statements for jeans as needed
 
 -- Insert statements for shoes
-INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Air 1 Jordan mid', 'Smokey grey', 'Jordan', '42', 'Grey', 95.00, 'male', 'assets/images/jordan-1.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Air 1 Jordan mid', 'Smokey grey', 'Jordan', '42', 'Grey', 95.00, 'shoe','male', 'assets/images/jordan-1.jpg');
 
-INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Air 1 Jordan high', 'University blue', 'Jordan', '44', 'Blue', 80.00, 'male', 'assets/images/jordan-2-blue.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Air 1 Jordan high', 'University blue', 'Jordan', '44', 'Blue', 80.00,'shoe', 'male', 'assets/images/jordan-2-blue.jpg');
 
-INSERT INTO shoes (name, description, brand, size, color, price, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Spiderman:Origin Story', 'Jordan', '43', 'Red', 100.00, 'male', 'assets/images/jordan-3-red.jpg');
+INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Air 1 Jordan high', 'Spiderman:Origin Story', 'Jordan', '43', 'Red', 100.00, 'shoe','male', 'assets/images/jordan-3-red.jpg');
 
 -- Add more insert statements for shoes as needed
