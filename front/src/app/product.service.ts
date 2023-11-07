@@ -41,12 +41,16 @@ export class ProductService {
     return this.http.get<any[]>(this.shoes + 'allshoes'); // Specify the type as any[]
   }
 
-  getShoe(id:string){
+  getShoe(id: string) {
     return this.http.get<Product>(`http://localhost:8084/shoes/${id}`);
   }
-  getJean(id:string){
+
+  getJean(id: string) {
     return this.http.get<Product>(`http://localhost:8084/jeans/${id}`);
   }
+
+
+
 
 
   // getJeansDetails(id: number): Observable<ResponseModel> {

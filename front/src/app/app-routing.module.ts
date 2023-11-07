@@ -25,7 +25,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'details/:id', component: DetailsComponent
+  path: 'details/:type/:id', component: DetailsComponent
   },
   {
     path: 'login', component: LoginRegisterComponent

@@ -1,7 +1,6 @@
 package com.example.ecomerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -13,6 +12,10 @@ import lombok.*;
 @Setter
 @ToString
 public class Shirt extends Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String brand;
     private String size;

@@ -22,7 +22,7 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.productService.getJeans().subscribe(data => {
-      this.alljeans = data.slice(9,12);
+      this.alljeans = data.slice(0,3);
       console.log(this.alljeans)
     });
     this.productService.getShoes().subscribe(data => {

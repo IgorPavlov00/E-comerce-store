@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JeanService {
@@ -18,9 +19,13 @@ public class JeanService {
         return jeanRepository.findAll();
     }
 
-    public Jeans getJeanById(Long id) {
-        return jeanRepository.findById(id).orElse(null);
+    public Optional<Jeans> findJeansById(String id) {
+        return jeanRepository.findJeansById(id);
     }
+
+
+
+
 
 
 

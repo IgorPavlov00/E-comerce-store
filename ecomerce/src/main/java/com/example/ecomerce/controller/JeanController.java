@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/jeans")
@@ -22,10 +23,16 @@ public class JeanController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Jeans> getJeansById(@PathVariable Long id) {
-        Jeans jeans = jeanService.getJeanById(id);
-        return ResponseEntity.ok(jeans);
+    public ResponseEntity<Jeans> getJeansById(@PathVariable String id) {
+        Optional<Jeans> jeans = jeanService.findJeansById(id);
+
+        if (jeans.isPresent()) {
+            return ResponseEntity.ok(jeans.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     // Add more endpoints as needed
 }
