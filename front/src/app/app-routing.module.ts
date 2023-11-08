@@ -15,6 +15,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {LoginRegisterComponent} from "./login-register/login-register.component";
 import {VerifyComponent} from "./verify/verify.component";
+import {OtherComponent} from "./other/other.component";
 
 
 
@@ -33,6 +34,9 @@ const routes: Routes = [
   {
     path: 'verify', component: VerifyComponent
   },
+  {
+    path: 'other', component:OtherComponent
+  }
 
 ];
 

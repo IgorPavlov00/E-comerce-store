@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 ul,
@@ -34,7 +35,7 @@ img {
 
 body {
   background: #fff;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0.1px;
@@ -49,8 +50,7 @@ body {
 main {
   display: flex;
   width: 100%;
-  height: 100%;
-  min-width: 1200px;
+  max-width: 1750px;
   top: 30%;
 }
 main .container {
@@ -195,6 +195,7 @@ main .container .breadcrumb {
   width: 100%;
   height: 100px;
   margin-top: 50px;
+  margin-left: 120px;
 
 }
 main .container .breadcrumb-content {
@@ -236,22 +237,27 @@ main .container .product-main .product-content {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  padding-left: 160px;
+  padding-left: 100px;
   padding-right: 60px;
 }
 main .container .product-main .product-content .product-media {
-  width: 50%;
+
   margin-right: 50px;
-  height: 100%;
+  height: 80%;
+  width: 60%;
   display: flex;
+
   flex-direction: column;
+
 }
 main .container .product-main .product-content .product-media .product-image {
   display: flex;
+
 }
 main .container .product-main .product-content .product-media .product-image img {
-  width: 50%;
+  width: 65%;
   border-radius: 10px;
+  margin-left: 100px;
 }
 main .container .product-main .product-content .product-media .product-image img.active {
   display: block;
@@ -334,6 +340,8 @@ main .container .product-main .product-content .product-desc .desc-header .price
   font-size: 16px;
   font-weight: 600;
   margin-left: 20px;
+  border: 1.5px solid #ddd;
+  border-radius: 25px;
 }
 main .container .product-main .product-content .product-desc .desc-content {
   border-bottom: 1px solid #f0f2ee;
@@ -550,4 +558,69 @@ main .container .product-main .product-footer .footer-price button:hover {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+
+.product-detail h2{
+  text-transform: capitalize;
+  color: #12263a;
+
+  padding-bottom: 0.6rem;
+}
+.product-detail p{
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  opacity: 0.8;
+}
+.product-detail ul{
+  /*margin: 1rem 0;*/
+  font-size: 0.9rem;
+}
+.product-detail ul li{
+  margin: 0;
+  list-style: none;
+  background: url(src/assets/images/checked.png) left center no-repeat;
+  background-size: 18px;
+  padding-left: 1.7rem;
+  margin: 0.4rem 0;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.product-detail ul li span{
+  font-weight: 400;
+}
+.purchase-info{
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+}
+.purchase-info input,
+.purchase-info .btn{
+  border: 1.5px solid #ddd;
+  border-radius: 25px;
+  text-align: center;
+  padding: 0.45rem 0.8rem;
+  outline: 0;
+  margin-right: 0.2rem;
+  margin-bottom: 1rem;
+
+
+}
+.purchase-info input{
+  width: 60px;
+
+}
+.purchase-info .btn{
+  cursor: pointer;
+  color: #fff;
+
+}
+.purchase-info .btn:first-of-type{
+  background: #20daa6;
+}
+.purchase-info .btn:last-of-type{
+  background: #f64749;
+}
+.purchase-info .btn:hover{
+  opacity: 0.9;
 }

@@ -1,13 +1,8 @@
-
 <app-navbar></app-navbar>
 <main>
 
 
-
-
-
   <div class="container" *ngIf="prod">
-
 
 
     <nav class="breadcrumb">
@@ -56,7 +51,7 @@
 
             <div class="price">
               <span class="price-old">{{prod.price}}$</span>
-              <span class="price-new">{{prod.price-prod.price*0.2}}$</span>
+              <span class="price-new">{{prod.price - prod.price * 0.2}}$</span>
               <span class="price-discount">-20%</span>
             </div>
           </div>
@@ -66,50 +61,44 @@
 							<h4>Available in sizes:</h4>
 							<p>{{prod.size}}</p>
 						</span>
+
             <span>
-							<h4>colors:</h4>
-							<p>{{prod.color}}</p>
+							      <p *ngIf="prod.type=='jean'">Crafted with precision and attention to detail, these jeans offer a comfortable fit and a sleek, modern look. The shade of grey is both sophisticated and easy to pair with a variety of outfits, making them a go-to choice for casual occasions.They are the {{prod.description}}
+                      .  </p>
+                    <p *ngIf="prod.type=='shoe'">Designed in collaboration with legendary basketball player Michael Jordan, these sneakers offer a combination of style, performance, and comfort.They are the {{prod.description}}
+                      air 1 Jordans. </p>
+
 						</span>
+          </div>
+          <div class="product-detail">
+            <ul>
+              <li>Color: <span>{{prod.color}}</span></li>
+              <li>Available: <span>in stock</span></li>
+              <li>Category: <span>{{prod.type}}s</span></li>
+              <li>Shipping Area: <span>All over the world</span></li>
+              <li>Shipping Fee: <span>Free</span></li>
+            </ul>
+          </div>
+
+          <div class="purchase-info">
+            <input type="number" min="0" value="1">
+            <button type="button" class="btn">Buy now</button>
+            <button type="button" class="btn">
+              Add to Cart <i class="fas fa-shopping-cart"></i>
+            </button>
 
           </div>
 
-          <div class="product-type">
-            <div class="item product-type-color">
-              <label for="product-type-color">Color</label>
-              <select id="product-type-color" name="color">
-                <option>Any</option>
-                <option selected>Dark Steel</option>
-                <option>Matt Black</option>
-              </select>
-            </div>
 
-            <div class="item product-type-size">
-              <label for="product-type-size">Height</label>
-              <select id="product-type-size" name="size">
-                <option>Any</option>
-                <option selected>40 cm</option>
-                <option>50 cm</option>
-              </select>
-            </div>
-
-            <div class="item product-type-qty">
-              <label for="product-type-qty">Qty</label>
-              <select id="product-type-qty" name="qty">
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+</main>
 
+<app-other></app-other>
+<app-footer></app-footer>
 
-
-
-
-
-<p>details</p>
 

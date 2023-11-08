@@ -19,6 +19,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import {FormsModule} from "@angular/forms";
 import { ConfirmComponent } from './confirm/confirm.component';
 import { VerifyComponent } from './verify/verify.component';
+import { OtherComponent } from './other/other.component';
 
 
 
@@ -36,7 +37,8 @@ import { VerifyComponent } from './verify/verify.component';
     LandingPageComponent,
     LoginRegisterComponent,
     ConfirmComponent,
-    VerifyComponent
+    VerifyComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,

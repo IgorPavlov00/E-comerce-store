@@ -100,7 +100,14 @@ VALUES ('Levi''s 32 Cargo Jeans', 'Levi''s cargo style jeans', 'Levi''s', '32', 
 
 INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
 VALUES ('Levi''s 32 Hybrid Cargo Jeans', 'Levi''s hybrid cargo style jeans', 'Levi''s', '32', 'Black', 95.00,'jean', 'male', 'assets/images/levis-32-hybrid-cargo.jpg');
--- Add more insert statements for jeans as needed
+
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Denim 38 Oversize Jeans', 'Oversized denim jeans', 'Denim', '38', 'Blue', 90.00,'jean', 'male', 'assets/images/denim-38-oversize.jpg');
+INSERT INTO jeans (name, description, brand, size, color, price,type,gender, image_path)
+VALUES ('Denim 32 Fit Jeans', 'Perfect fit denim jeans', 'Denim', '32', 'Blue', 85.00,'jean','male', 'assets/images/denim-32-fit.jpg');
+INSERT INTO jeans (name, description, brand, size, color, price,type, gender, image_path)
+VALUES ('Diesel 34 Grey Jeans', 'Stylish Diesel grey jeans', 'Diesel', '34', 'Grey', 95.00,'jean','male', 'assets/images/diesel_34_grey.jpg');
+
 
 -- Insert statements for shoes
 INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
