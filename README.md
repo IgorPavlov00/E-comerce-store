@@ -2,7 +2,9 @@
 E-comerce store
 
 
-![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/a20b8356-1477-4e7c-b91e-601a3841032c)
+![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/a8dc9e2d-9b3d-4942-9aa9-7ee17fdee0b4)
 
 
-![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/13cd8ed6-e5fb-476a-ad44-1724a2546d64)
+
+![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/ea9564d5-14e8-423c-a2e9-7b3d5794fbac)
+
