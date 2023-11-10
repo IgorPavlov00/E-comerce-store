@@ -19,6 +19,7 @@ import {OtherComponent} from "./other/other.component";
 
 
 
+
 const routes: Routes = [
   {
 
@@ -31,12 +32,14 @@ const routes: Routes = [
   {
     path: 'login', component: LoginRegisterComponent
   },
+
   {
     path: 'verify', component: VerifyComponent
   },
   {
     path: 'other', component:OtherComponent
   }
+
 
 ];
 

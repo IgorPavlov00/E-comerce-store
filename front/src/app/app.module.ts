@@ -16,10 +16,10 @@ import {RouterModule} from "@angular/router";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { Location } from '@angular/common';
 import { LoginRegisterComponent } from './login-register/login-register.component';
+import {ConfirmComponent} from "./confirm/confirm.component";
+import {VerifyComponent} from "./verify/verify.component";
+import {OtherComponent} from "./other/other.component";
 import {FormsModule} from "@angular/forms";
-import { ConfirmComponent } from './confirm/confirm.component';
-import { VerifyComponent } from './verify/verify.component';
-import { OtherComponent } from './other/other.component';
 
 
 
@@ -35,10 +35,12 @@ import { OtherComponent } from './other/other.component';
     FooterComponent,
     DetailsComponent,
     LandingPageComponent,
+
     LoginRegisterComponent,
     ConfirmComponent,
     VerifyComponent,
     OtherComponent
+
   ],
   imports: [
     BrowserModule,
