@@ -57,7 +57,7 @@ public class UserController {
 
         // Send the email with the link
 
-        emailSenderService.sendSimpleEmail(k.getEmail(),"Aktivirajte vas nalog","Dobro dosli:"+k.getName()+" "+k.getLastname());
+        emailSenderService.sendSimpleEmail(k.getEmail(),"Aktivirajte vas nalog","Dobro dosli: "+k.getName()+" "+k.getLastname());
         return ResponseEntity.ok(k);
     }
 

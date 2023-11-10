@@ -28,26 +28,9 @@
         <div class="product-desc">
 
           <div class="desc-header">
-            <div class="rating">
-              <svg class="icon icon-star rating">
-                <use xlink:href="#icon-star"></use>
-              </svg>
-              <svg class="icon icon-star rating">
-                <use xlink:href="#icon-star"></use>
-              </svg>
-              <svg class="icon icon-star rating">
-                <use xlink:href="#icon-star"></use>
-              </svg>
-              <svg class="icon icon-star">
-                <use xlink:href="#icon-star"></use>
-              </svg>
-              <svg class="icon icon-star">
-                <use xlink:href="#icon-star"></use>
-              </svg>
 
-            </div>
 
-            <h1>{{prod.name}}</h1>
+            <h1 >{{prod.name}}</h1>
 
             <div class="price">
               <span class="price-old">{{prod.price}}$</span>
@@ -98,7 +81,7 @@
 
 </main>
 
-<app-other></app-other>
+<app-other [productType]="productType"></app-other>
 <app-footer></app-footer>
 
 

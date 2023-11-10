@@ -25,6 +25,16 @@ public class EmailSenderService {
 
     }
 
+    public void sendConfirmationEmail(String email, String token) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("ecomerceapp2023@gmail.com");
+        message.setTo(email);
+        message.setSubject("Email Confirmation");
+        message.setText("Please click on the following link to confirm your email: "
+                + "http://localhost:4200/confirm?token=" + token);
+        mailSender.send(message);
+    }
+
 
 
 }

@@ -10,6 +10,7 @@ import { ProductService, Product } from '../product.service';
 export class DetailsComponent implements OnInit {
 
   prod: Product | undefined;
+  productType: string | undefined;
 
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService) {}
 
@@ -18,6 +19,8 @@ export class DetailsComponent implements OnInit {
     const id = this.activeRoute.snapshot.paramMap.get('id');
 
     if (type && id) {
+      this.productType = type;
+
       if (type === 'shoe') {
         this.productService.getShoe(id).subscribe((result) => {
           this.prod = result;
