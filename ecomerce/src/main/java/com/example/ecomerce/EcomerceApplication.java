@@ -19,17 +19,16 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class EcomerceApplication {
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
 	@Autowired
 	private EmailSenderService service;
 	public static void main(String[] args) {
 		SpringApplication.run(EcomerceApplication.class, args);
 	}
-<<<<<<< Updated upstream
+
+
+
+
 //	@EventListener(ApplicationReadyEvent.class)
 //	public void triggerMail() throws MessagingException {
 //		service.sendSimpleEmail("igorpavlov106@gmail.com",
@@ -37,16 +36,7 @@ public class EcomerceApplication {
 //				"This is email subject");
 //
 //	}
-=======
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void triggerMail() throws MessagingException {
-		service.sendSimpleEmail("igorpavlov106@gmail.com",
-				"This is email body",
-				"This is email subject");
-
-	}
->>>>>>> Stashed changes
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();

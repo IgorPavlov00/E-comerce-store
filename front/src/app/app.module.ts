@@ -20,6 +20,7 @@ import {ConfirmComponent} from "./confirm/confirm.component";
 import {VerifyComponent} from "./verify/verify.component";
 import {OtherComponent} from "./other/other.component";
 import {FormsModule} from "@angular/forms";
+import { BrowseComponent } from './browse/browse.component';
 
 
 
@@ -39,7 +40,8 @@ import {FormsModule} from "@angular/forms";
     LoginRegisterComponent,
     ConfirmComponent,
     VerifyComponent,
-    OtherComponent
+    OtherComponent,
+    BrowseComponent
 
   ],
   imports: [

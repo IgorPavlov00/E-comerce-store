@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ProductService, Product } from '../product.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-other',
@@ -11,7 +12,7 @@ export class OtherComponent {
   @Input() productType: string | undefined;
   similarProducts: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private router:Router) {}
 
   ngOnInit() {
     if (this.productType === 'shoe') {
@@ -24,4 +25,8 @@ export class OtherComponent {
       });
     }
   }
+
+  // details(id: number, type: string) {
+  //   this.router.navigateByUrl(`/details/${type}/${id}`);
+  // }
 }

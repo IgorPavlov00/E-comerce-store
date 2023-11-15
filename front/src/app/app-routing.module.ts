@@ -16,6 +16,8 @@ import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {LoginRegisterComponent} from "./login-register/login-register.component";
 import {VerifyComponent} from "./verify/verify.component";
 import {OtherComponent} from "./other/other.component";
+import {BrowseComponent} from "./browse/browse.component";
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 
@@ -38,8 +40,11 @@ const routes: Routes = [
   },
   {
     path: 'other', component:OtherComponent
-  }
-
+  },
+  {
+    path: 'browse', component:BrowseComponent
+  },
+  { path: 'confirm', component: ConfirmComponent }
 
 ];
 

@@ -1,6 +1,7 @@
 package com.example.ecomerce.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;

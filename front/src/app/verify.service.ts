@@ -11,7 +11,7 @@ export class VerifyService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    this.url = "http://localhost:8084/confirm";
+    this.url = "http://localhost:8084/users/confirm";
   }
 
   verify(token: string | null): Observable<object> {

@@ -21,13 +21,15 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.productService.getJeans().subscribe(data => {
-      this.alljeans = data.slice(0,3);
-      console.log(this.alljeans)
+      this.alljeans = data.filter(jean => jean.price > 90);
+      console.log(this.alljeans);
     });
+
     this.productService.getShoes().subscribe(data => {
-      this.allshoes=data.slice(0,3);
-      console.log(this.allshoes)
+      this.allshoes = data.filter(shoe => shoe.price > 130);
+      console.log(this.allshoes);
     });
+
 
   }
 
