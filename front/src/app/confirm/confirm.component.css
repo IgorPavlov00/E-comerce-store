@@ -11,7 +11,7 @@ body  {
   text-align: center;
   justify-content: center;
   align-items: center;
-
+  background-color: #d53b3b;
 }
 
 .wrapperAlert {
@@ -36,7 +36,7 @@ body  {
   padding: 40px 0;
   background: rgb(0,0,0);
   padding-left: 35px;
-  background: -webkit-linear-gradient(45deg, #d53b3b, #d27676);
+  background: -webkit-linear-gradient(45deg, #0db971, #d3bfbf);
 }
 
 .topHalf p {

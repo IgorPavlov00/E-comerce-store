@@ -16,7 +16,7 @@ nav {
   box-shadow: none; /* Remove the box shadow */
   height: 80px;
   line-height: 80px;
-  position: absolute; /* Position it absolutely */
+  position: fixed; /* Position it absolutely */
   top: 0;
   left: 0;
   width: 100%;

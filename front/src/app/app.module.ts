@@ -19,7 +19,7 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import {ConfirmComponent} from "./confirm/confirm.component";
 import {VerifyComponent} from "./verify/verify.component";
 import {OtherComponent} from "./other/other.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowseComponent } from './browse/browse.component';
 
 
@@ -44,15 +44,16 @@ import { BrowseComponent } from './browse/browse.component';
     BrowseComponent
 
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    RouterModule,
-    FormsModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
 
 
-  ],
+    ],
   providers: [Location],
   bootstrap: [AppComponent]
 })

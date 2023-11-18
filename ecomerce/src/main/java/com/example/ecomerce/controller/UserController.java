@@ -40,12 +40,23 @@ public class UserController {
         userService.createVerificationToken(k, token);
 
         // Build the HTML content for the email with the dynamic link and token
+//        String confirmationLink = "http://localhost:4200/confirm?token=" + token;
+//        String htmlContent = "<html><body>" +
+//                "<div style='text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;'>" +
+//                "<h1>Welcome to Our Platform"+" "+k.getName()+" "+k.getLastname()+"!</h1>" +
+//                "<p>Click the button below to verify your account:</p>" +
+//                "<a href='" + confirmationLink + "' style='display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #ffffff; text-decoration: none; border-radius: 5px;'>Confirm Email</a>" +
+//                "</div></body></html>";
         String confirmationLink = "http://localhost:4200/confirm?token=" + token;
+        String imageUrl = "https://www.creativefabrica.com/wp-content/uploads/2018/10/Shopping-cart-logo-by-DEEMKA-STUDIO-580x406.jpg";
+
         String htmlContent = "<html><body>" +
-                "<div style='text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;'>" +
-                "<h1>Welcome to Our Platform"+" "+k.getName()+" "+k.getLastname()+"!</h1>" +
+                "<div style='text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;background-color:bisque;'>" +
+                "<h1 >Welcome to Our Store " + k.getName() + " " + k.getLastname() + "!</h1>" +
                 "<p>Click the button below to verify your account:</p>" +
                 "<a href='" + confirmationLink + "' style='display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #ffffff; text-decoration: none; border-radius: 5px;'>Confirm Email</a>" +
+                "<br><br>" +
+                "<img src='" + imageUrl + "' alt='Cart Image' style='max-width: 100%; max-height:60%; border-radius:5px;'><br>" +
                 "</div></body></html>";
 
         // Send the email with HTML content
@@ -110,12 +121,12 @@ public class UserController {
 //                "                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color: #ffffff;font-family:Helvetica, Arial, sans-serif;color:#445258;line-height: 22px;\">\n" +
 //                "                                            <tbody><tr>\n" +
 //                "                                                <td style=\"text-align: center; display: block; padding: 0px 20px 20px 20px;\">\n" +
-//                "                                                    <h1 style=\"color:#183643;text-align: center; font-size: 24px; letter-spacing: 1px; margin-bottom: 30px;\">Activate your Shapeways account</h1>\n" +
+//                "                                                    <h1 style=\"color:#183643;text-align: center; font-size: 24px; letter-spacing: 1px; margin-bottom: 30px;\">Activate your account</h1>\n" +
 //                "                                                </td>\n" +
 //                "                                            </tr>\n" +
 //                "                                            <tr>\n" +
 //                "                                                <td style=\"padding: 0px 16.66% 40px 16.66%; text-align: center; display: block;\">\n" +
-//                "                                                    <img style=\"width: 100%\" src=\"https://www.shapeways.com/rrstatic/img/email/email-verification-three-step.png\" alt=\"Activate Your Shapeways Account\">\n" +
+//                "                                                    <img style=\"width: 100%\" src=\"https://www.shapeways.com/rrstatic/img/email/email-verification-three-step.png\" alt=\"Activate Your  Account\">\n" +
 //                "                                                </td>\n" +
 //                "                                            </tr>\n" +
 //                "                                            <tr>\n" +

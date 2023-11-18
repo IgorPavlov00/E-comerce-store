@@ -111,28 +111,28 @@ VALUES ('Diesel 34 Grey Jeans', 'Stylish Diesel grey jeans', 'Diesel', '34', 'Gr
 
 -- Insert statements for shoes
 INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
-VALUES ('Air 1 Jordan mid', 'Smokey grey', 'Jordan', '42', 'Grey', 95.00, 'shoe','male', 'assets/images/jordan-1.jpg');
+VALUES ('Air 1 Jordan mid', 'Smokey grey', 'Jordan', '42', 'Grey', 95.00, 'shoe','male', 'assets/images/jordan-1-removebg-preview.png');
 
 INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'University blue', 'Jordan', '44', 'Blue', 80.00,'shoe', 'male', 'assets/images/jordan-2-blue.jpg');
+VALUES ('Air 1 Jordan high', 'University blue', 'Jordan', '44', 'Blue', 80.00,'shoe', 'male', 'assets/images/jordan-2-blue-removebg-preview.png');
 
 INSERT INTO shoes (name, description, brand, size, color, price,type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Spiderman:Origin Story', 'Jordan', '43', 'Red', 100.00, 'shoe','male', 'assets/images/jordan-3-red.jpg');
+VALUES ('Air 1 Jordan high', 'Spiderman:Origin Story', 'Jordan', '43', 'Red', 100.00, 'shoe','male', 'assets/images/jordan-3-red-removebg-preview.png');
 
 -- Air Jordan 1 Retro High OG - Shattered Backboard
 INSERT INTO shoes (name, description, brand, size, color, price, type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Shattered Backboard', 'Jordan', '44.5', 'Black/Orange/White', 180.00, 'shoe', 'male', 'assets/images/jordan-shattered-backboard.jpg');
+VALUES ('Air 1 Jordan high', 'Shattered Backboard', 'Jordan', '44.5', 'Black/Orange/White', 180.00, 'shoe', 'male', 'assets/images/jordan-shattered-backboard-removebg-preview.png');
 
 -- Air Jordan 1 Retro High OG - Shadow
 INSERT INTO shoes (name, description, brand, size, color, price, type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Shadow', 'Jordan', '42', 'Black/Grey', 160.00, 'shoe', 'male', 'assets/images/jordan-shadow.png');
+VALUES ('Air 1 Jordan high', 'Shadow', 'Jordan', '42', 'Black/Grey', 160.00, 'shoe', 'male', 'assets/images/jordan-shadow-removebg-preview.png');
 
 -- Air Jordan 1 Retro High OG - Pine Green
 INSERT INTO shoes (name, description, brand, size, color, price, type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Pine Green', 'Jordan', '43', 'Black/Green/White', 140.00, 'shoe', 'male', 'assets/images/jordan-pine-green.png');
+VALUES ('Air 1 Jordan high', 'Pine Green', 'Jordan', '43', 'Black/Green/White', 140.00, 'shoe', 'male', 'assets/images/jordan-pine-green-removebg-preview.png');
 
 -- Air Jordan 1 Retro High OG - Turbo Green
 INSERT INTO shoes (name, description, brand, size, color, price, type, gender, image_path)
-VALUES ('Air 1 Jordan high', 'Royal', 'Jordan', '42.5', 'Black/Royal Blue', 130.00, 'shoe', 'male', 'assets/images/jordan-royal.png');
+VALUES ('Air 1 Jordan high', 'Royal', 'Jordan', '42.5', 'Black/Royal Blue', 130.00, 'shoe', 'male', 'assets/images/jorda-royal-removebg-preview.png');
 
 -- Add more insert statements for shoes as needed

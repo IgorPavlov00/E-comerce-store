@@ -1,0 +1,201 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="filter">
+  <div class="filter-sidebar">
+
+    <h6 class="filter-item-title">Search</h6>
+    <div class="filter-item filter-search">
+      <input type="text" class="filter-search-value">
+      <i class="fa fa-search filter-search-icon"></i>
+    </div>
+
+    <h6 class="filter-item-title">Cost</h6>
+    <form [formGroup]="priceForm">
+
+      <input class="filter-item-title" type="range" id="price" name="price" [min]="minPrice" [max]="maxPrice" formControlName="price" (input)="onPriceChange()">${{ priceForm.value.price }}
+
+    </form>
+
+    <div class="separator"></div>
+
+    <h6 class="filter-item-title">Colors</h6>
+    <div class="filter-item filter-color">
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+      <div class="filter-color-item">
+        <input type="text" class="filter-color-checkbox">
+        <label for="" class="filter-color-value"></label>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <h6 class="filter-item-title">Brand</h6>
+    <div class="filter-item filter-brand">
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-1">
+        <label for="filter-brand-1" class="filter-checkbox-text">Nike</label>
+      </div>
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-2">
+        <label for="filter-brand-2" class="filter-checkbox-text">Jordan</label>
+      </div>
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-3">
+        <label for="filter-brand-3" class="filter-checkbox-text">Adidas</label>
+      </div>
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-4">
+        <label for="filter-brand-4" class="filter-checkbox-text">Levis</label>
+      </div>
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-5">
+        <label for="filter-brand-5" class="filter-checkbox-text">Denim</label>
+      </div>
+      <div class="filter-checkbox-item">
+        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-6">
+        <label for="filter-brand-6" class="filter-checkbox-text">Timberland</label>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <h6 class="filter-item-title">Model</h6>
+<!--    <div class="filter-item filter-model">-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-1">-->
+<!--        <label for="filter-model-1" class="filter-checkbox-text">Xiaomi Redmi 9</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-2">-->
+<!--        <label for="filter-model-2" class="filter-checkbox-text">Nokia 7.2</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-3">-->
+<!--        <label for="filter-model-3" class="filter-checkbox-text">Apple iPhone XR</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-4">-->
+<!--        <label for="filter-model-4" class="filter-checkbox-text">Apple iPhone XS</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-5">-->
+<!--        <label for="filter-model-5" class="filter-checkbox-text">Apple iPhone SE</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-6">-->
+<!--        <label for="filter-model-6" class="filter-checkbox-text">Honor X20 SE</label>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="separator"></div>
+
+<!--    <h6 class="filter-item-title">Operating system</h6>-->
+<!--    <div class="filter-item filter-os">-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-os-1">-->
+<!--        <label for="filter-os-1" class="filter-checkbox-text">Android</label>-->
+<!--      </div>-->
+<!--      <div class="filter-checkbox-item">-->
+<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-os-2">-->
+<!--        <label for="filter-os-2" class="filter-checkbox-text">iOS</label>-->
+<!--      </div>-->
+<!--    </div>-->
+
+  </div>
+
+  <div class="filter-content">
+    <div class="card" *ngFor="let p of allshoes">
+      <div class="product-image"><img src="{{p.imagePath}}" alt="" /></div>
+      <div class="product-info">
+
+
+
+        <h1 class="product-name">{{p.name}}</h1>
+        <h3 class="product-name">{{p.description}}</h3>
+
+        <div class="purchase-info">
+        <h2 class="product-price">{{p.price}}</h2>
+
+
+        <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Add to cart</a>
+        </div>
+      </div>
+    </div>
+<!--    <div class="container">-->
+<!--  <div class="wrapper" *ngFor="let p of allshoes">-->
+<!--    <div class="product-img">-->
+<!--      <img src="{{p.imagePath}}" height="320" width="250">-->
+<!--    </div>-->
+<!--    <div class="product-info">-->
+<!--      <div class="product-text">-->
+<!--        <h1>{{p.name}}</h1>-->
+<!--        <h2>{{p.description}}</h2>-->
+<!--        <p>Designed in collaboration with legendary basketball player Michael Jordan, these sneakers offer a combination of style, performance, and comfort. </p>-->
+<!--      </div>-->
+<!--      <div class="product-price-btn">-->
+<!--        <p><span>{{p.price}}</span>$</p>-->
+<!--        <button type="button" routerLink="/details/{{p.type}}/{{p.id}}">buy now</button>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  </div>
+<!--      <div class="filter-goods" *ngFor="let p of allshoes">-->
+<!--        <div class="filter-goods-item">-->
+<!--          <div class="filter-goods-header">-->
+<!--            <img src="{{p.imagePath}}" class="filter-goods-picture" alt="">-->
+<!--          </div>-->
+<!--          <div class="filter-goods-body">-->
+<!--            <h5 class="filter-goods-title">{{p.name}}</h5>-->
+
+<!--            <div class="filter-goods-eval filter-goods-row">-->
+<!--              <i class="fa fa-star fa-star-active"></i>-->
+<!--              <i class="fa fa-star fa-star-active"></i>-->
+<!--              <i class="fa fa-star fa-star-active"></i>-->
+<!--              <i class="fa fa-star fa-star-active"></i>-->
+<!--              <i class="fa fa-star"></i>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div class="filter-goods-footer">-->
+<!--            <button type="button" class="filter-goods-button filter-goods-favorite">-->
+<!--              <i class="fa fa-heart">-->
+<!--              </i>-->
+<!--            </button>-->
+<!--              <button type="button" class="filter-goods-button filter-goods-more">-->
+<!--                <i class="fa fa-eye">-->
+<!--                </i>-->
+<!--              </button>-->
+
+<!--                <button type="button" class="filter-goods-button filter-goods-cart">-->
+<!--                  <i class="fa fa-cart-arrow-down"></i>-->
+<!--                </button>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+
