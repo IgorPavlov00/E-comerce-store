@@ -12,11 +12,11 @@
     </div>
 
     <h6 class="filter-item-title">Cost</h6>
-    <form [formGroup]="priceForm">
+<!--    <form [formGroup]="priceForm">-->
 
-      <input class="filter-item-title" type="range" id="price" name="price" [min]="minPrice" [max]="maxPrice" formControlName="price" (input)="onPriceChange()">${{ priceForm.value.price }}
+<!--      <input class="filter-item-title" type="range" id="price" name="price" [min]="minPrice" [max]="maxPrice" formControlName="price" (input)="onPriceChange()">${{ priceForm.value.price }}-->
 
-    </form>
+<!--    </form>-->
 
     <div class="separator"></div>
 
@@ -125,77 +125,80 @@
   </div>
 
   <div class="filter-content">
-    <div class="card" *ngFor="let p of allshoes">
-      <div class="product-image"><img src="{{p.imagePath}}" alt="" /></div>
-      <div class="product-info">
+    <!-- Card section  -->
+    <div class="card" *ngFor="let p of allshoes" routerLink="/details/{{p.type}}/{{p.id}}">
+      <!--card top section-->
+
+      <div class="card-top">
+        <div class="top-circle"></div>
+        <div class="logo-img">
+          <img src="https://i.postimg.cc/vBJtjtRC/nike-logo.png" alt="">
+        </div>
+        <img class="product-img"
+             src="{{p.imagePath}}" alt="">
+      </div>
+      <!--end of card top section-->
+      <h1 class="brand-name">{{p.description}}</h1>
+      <div class="card-bottom product-info">
+<!--        <p class="about">Designed in collaboration with legendary basketball player Michael Jordan, these sneakers offer a combination of style, performance, and comfort. </p>-->
 
 
+        <div class="product-info-top">
 
-        <h1 class="product-name">{{p.name}}</h1>
-        <h3 class="product-name">{{p.description}}</h3>
+          <div class="product-info-product">
+            <span class="product-info_product-text">{{p.name}}</span>
+<!--            <span class="product-info_product-price">{{p.price}}$</span>-->
+          </div>
+          <div class="sizes">
+            <span class="sizes-text">Size</span>
+            <div class="sizes-inner">
+              <div class="sizes-size">7</div>
+              <div class="sizes-size">8</div>
+              <div class="sizes-size">8.5</div>
+              <div class="sizes-size">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+<!--          <div class="colors">-->
+<!--            <div class="colors-color colors-yellow">-->
+<!--              <input type="checkbox" id="checkbox-yellow" checked />-->
+<!--              <input type="checkbox" id="checkbox-white" checked />-->
+<!--              <input type="checkbox" id="checkbox-blue" checked />-->
+<!--              <input type="checkbox" id="checkbox-green" checked />-->
+<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
+<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
+<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
+<!--              -->
+<!--            </div>-->
+<!--          </div>-->
 
-        <div class="purchase-info">
-        <h2 class="product-price">{{p.price}}</h2>
-
-
-        <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Add to cart</a>
+<!--          <button class="buy-button">Buy</button>-->
+<!--          <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Buy now</a>-->
         </div>
       </div>
     </div>
-<!--    <div class="container">-->
-<!--  <div class="wrapper" *ngFor="let p of allshoes">-->
-<!--    <div class="product-img">-->
-<!--      <img src="{{p.imagePath}}" height="320" width="250">-->
-<!--    </div>-->
-<!--    <div class="product-info">-->
-<!--      <div class="product-text">-->
-<!--        <h1>{{p.name}}</h1>-->
-<!--        <h2>{{p.description}}</h2>-->
-<!--        <p>Designed in collaboration with legendary basketball player Michael Jordan, these sneakers offer a combination of style, performance, and comfort. </p>-->
-<!--      </div>-->
-<!--      <div class="product-price-btn">-->
-<!--        <p><span>{{p.price}}</span>$</p>-->
-<!--        <button type="button" routerLink="/details/{{p.type}}/{{p.id}}">buy now</button>-->
 
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-  </div>
-<!--      <div class="filter-goods" *ngFor="let p of allshoes">-->
-<!--        <div class="filter-goods-item">-->
-<!--          <div class="filter-goods-header">-->
-<!--            <img src="{{p.imagePath}}" class="filter-goods-picture" alt="">-->
-<!--          </div>-->
-<!--          <div class="filter-goods-body">-->
-<!--            <h5 class="filter-goods-title">{{p.name}}</h5>-->
+    <!-- End of Card section -->
+<!--    <div class="card" *ngFor="let p of allshoes">-->
+<!--      <div class="product-image"><img src="{{p.imagePath}}" alt="" /></div>-->
+<!--      <div class="product-info">-->
 
-<!--            <div class="filter-goods-eval filter-goods-row">-->
-<!--              <i class="fa fa-star fa-star-active"></i>-->
-<!--              <i class="fa fa-star fa-star-active"></i>-->
-<!--              <i class="fa fa-star fa-star-active"></i>-->
-<!--              <i class="fa fa-star fa-star-active"></i>-->
-<!--              <i class="fa fa-star"></i>-->
-<!--            </div>-->
 
-<!--          </div>-->
-<!--          <div class="filter-goods-footer">-->
-<!--            <button type="button" class="filter-goods-button filter-goods-favorite">-->
-<!--              <i class="fa fa-heart">-->
-<!--              </i>-->
-<!--            </button>-->
-<!--              <button type="button" class="filter-goods-button filter-goods-more">-->
-<!--                <i class="fa fa-eye">-->
-<!--                </i>-->
-<!--              </button>-->
 
-<!--                <button type="button" class="filter-goods-button filter-goods-cart">-->
-<!--                  <i class="fa fa-cart-arrow-down"></i>-->
-<!--                </button>-->
-<!--          </div>-->
-<!--          </div>-->
+<!--        <h1 class="product-name">{{p.name}}</h1>-->
+<!--        <h3 class="product-name">{{p.description}}</h3>-->
+
+<!--        <div class="purchase-info">-->
+<!--        <h2 class="product-price">{{p.price}}</h2>-->
+
+
+<!--        <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Add to cart</a>-->
 <!--        </div>-->
 <!--      </div>-->
+    </div>
 
-<!--    </div>-->
+  </div>
+
 
 
