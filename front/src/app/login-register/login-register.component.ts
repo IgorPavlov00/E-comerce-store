@@ -32,7 +32,7 @@ export class LoginRegisterComponent implements OnInit {
     }
 
     // All fields are filled, proceed with registratio
-    this.toastr.success('Go check your email', 'Successful registration!');
+    this.toastr.success('Check your email at:'+this.user.email, 'Successful registration!');
     this.userRegisterService.registerUser(this.user).subscribe(
       response => {
         console.log(response);
