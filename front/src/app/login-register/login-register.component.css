@@ -199,5 +199,7 @@
 .container.active .toggle-right{
   transform: translateX(200%);
 }
-
+#toast-container > div {
+  opacity:1;
+}
 

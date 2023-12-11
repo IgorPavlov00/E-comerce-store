@@ -5,7 +5,7 @@
 <div class="filter">
   <div class="filter-sidebar">
 
-    <h6 class="filter-item-title">Search</h6>
+    <h6 class="filter-item-title" >Search</h6>
     <div class="filter-item filter-search">
       <input type="text" class="filter-search-value">
       <i class="fa fa-search filter-search-icon"></i>
@@ -81,124 +81,81 @@
     <div class="separator"></div>
 
     <h6 class="filter-item-title">Model</h6>
-<!--    <div class="filter-item filter-model">-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-1">-->
-<!--        <label for="filter-model-1" class="filter-checkbox-text">Xiaomi Redmi 9</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-2">-->
-<!--        <label for="filter-model-2" class="filter-checkbox-text">Nokia 7.2</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-3">-->
-<!--        <label for="filter-model-3" class="filter-checkbox-text">Apple iPhone XR</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-4">-->
-<!--        <label for="filter-model-4" class="filter-checkbox-text">Apple iPhone XS</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-5">-->
-<!--        <label for="filter-model-5" class="filter-checkbox-text">Apple iPhone SE</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-model-6">-->
-<!--        <label for="filter-model-6" class="filter-checkbox-text">Honor X20 SE</label>-->
-<!--      </div>-->
-<!--    </div>-->
+
 
     <div class="separator"></div>
 
-<!--    <h6 class="filter-item-title">Operating system</h6>-->
-<!--    <div class="filter-item filter-os">-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-os-1">-->
-<!--        <label for="filter-os-1" class="filter-checkbox-text">Android</label>-->
-<!--      </div>-->
-<!--      <div class="filter-checkbox-item">-->
-<!--        <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-os-2">-->
-<!--        <label for="filter-os-2" class="filter-checkbox-text">iOS</label>-->
-<!--      </div>-->
-<!--    </div>-->
 
   </div>
-
+  <div class="cart" [ngClass]="{ 'open': isCartOpen }" *ngIf="cartItems && cartItems.length > 0">
+    <header>
+      <span class="close" (click)="closeMenu()">+</span>
+      <li *ngFor="let cartItem of cartItems">
+        <p><strong>{{ cartItem.price }}</strong> - {{ cartItem.description }} <i class="fa fa-trash" (click)="removeFromCart(cartItem)"></i></p>
+        <img src="{{cartItem.imagePath}}" style="width: 120px" height="140px">
+      </li>
+    </header>
+    <div>
+      <p>Some items in cart...</p>
+    </div>
+    <div *ngIf="cartItems && cartItems.length === 0">
+      <p>Your cart is empty!</p>
+    </div>
+  </div>
   <div class="filter-content">
     <!-- Card section  -->
-    <div class="card" *ngFor="let p of allshoes" routerLink="/details/{{p.type}}/{{p.id}}">
+    <div class="card" *ngFor="let p of allshoes">
       <!--card top section-->
 
-      <div class="card-top">
+      <div class="card-top"   routerLink="/details/{{p.type}}/{{p.id}}">
         <div class="top-circle"></div>
-        <div class="logo-img">
+        <div class="logo-img" >
           <img src="https://i.postimg.cc/vBJtjtRC/nike-logo.png" alt="">
         </div>
         <img class="product-img"
              src="{{p.imagePath}}" alt="">
       </div>
+
       <!--end of card top section-->
       <h1 class="brand-name">{{p.description}}</h1>
+      <h2 class="brand-desc">{{p.name}} </h2>
+
+      <div class="prices">
+
+
+
+      </div>
       <div class="card-bottom product-info">
-<!--        <p class="about">Designed in collaboration with legendary basketball player Michael Jordan, these sneakers offer a combination of style, performance, and comfort. </p>-->
-
-
         <div class="product-info-top">
-
-          <div class="product-info-product">
-            <span class="product-info_product-text">{{p.name}}</span>
-<!--            <span class="product-info_product-price">{{p.price}}$</span>-->
-          </div>
           <div class="sizes">
-            <span class="sizes-text">Size</span>
+            <span class="sizes-text"></span>
             <div class="sizes-inner">
-              <div class="sizes-size">7</div>
-              <div class="sizes-size">8</div>
-              <div class="sizes-size">8.5</div>
-              <div class="sizes-size">9</div>
+              <div class="sizes-size" >${{p.price}}</div>
+              <button class="btn-hover color-1" (click)="addToCart(p)">Add to cart</button>
             </div>
-          </div>
-        </div>
-        <div class="bottom">
-<!--          <div class="colors">-->
-<!--            <div class="colors-color colors-yellow">-->
-<!--              <input type="checkbox" id="checkbox-yellow" checked />-->
-<!--              <input type="checkbox" id="checkbox-white" checked />-->
-<!--              <input type="checkbox" id="checkbox-blue" checked />-->
-<!--              <input type="checkbox" id="checkbox-green" checked />-->
-<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
-<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
-<!--              <label for="checkbox-yellow" class="colors-label"></label>-->
-<!--              -->
-<!--            </div>-->
-<!--          </div>-->
 
-<!--          <button class="buy-button">Buy</button>-->
-<!--          <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Buy now</a>-->
+
+
+
+
+
+
+
+
         </div>
+
+
       </div>
     </div>
 
-    <!-- End of Card section -->
-<!--    <div class="card" *ngFor="let p of allshoes">-->
-<!--      <div class="product-image"><img src="{{p.imagePath}}" alt="" /></div>-->
-<!--      <div class="product-info">-->
 
-
-
-<!--        <h1 class="product-name">{{p.name}}</h1>-->
-<!--        <h3 class="product-name">{{p.description}}</h3>-->
-
-<!--        <div class="purchase-info">-->
-<!--        <h2 class="product-price">{{p.price}}</h2>-->
-
-
-<!--        <a class="button" routerLink="/details/{{p.type}}/{{p.id}}" >Add to cart</a>-->
-<!--        </div>-->
-<!--      </div>-->
     </div>
 
   </div>
+
+</div>
+
+<!-- Add this section in your HTML template -->
 
 
 

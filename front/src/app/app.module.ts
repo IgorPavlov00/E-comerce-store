@@ -22,7 +22,9 @@ import {OtherComponent} from "./other/other.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowseComponent } from './browse/browse.component';
 
-
+import {ToastrModule} from "ngx-toastr";
+import { NotifierComponent } from './notifier/notifier.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { BrowseComponent } from './browse/browse.component';
     ConfirmComponent,
     VerifyComponent,
     OtherComponent,
-    BrowseComponent
+    BrowseComponent,
+    NotifierComponent
 
   ],
     imports: [
@@ -51,6 +54,10 @@ import { BrowseComponent } from './browse/browse.component';
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
+
+
 
 
     ],

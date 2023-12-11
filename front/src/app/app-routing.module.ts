@@ -18,6 +18,7 @@ import {VerifyComponent} from "./verify/verify.component";
 import {OtherComponent} from "./other/other.component";
 import {BrowseComponent} from "./browse/browse.component";
 import { ConfirmComponent } from './confirm/confirm.component';
+import {NotifierComponent} from "./notifier/notifier.component";
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
   {
     path: 'browse', component:BrowseComponent
   },
-  { path: 'confirm', component: ConfirmComponent }
+  { path: 'confirm', component: ConfirmComponent },
+  { path:'not',component:NotifierComponent}
 
 ];
 

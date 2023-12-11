@@ -1,0 +1,7 @@
+#toast-container > div {
+  opacity:1;
+}
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap');
+*{
+  font-family: 'Khand', sans-serif;
+}
