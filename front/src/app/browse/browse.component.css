@@ -8,7 +8,6 @@ html, body {
 }
 
 
-
 .filter {
   height: 900px;
 
@@ -115,6 +114,13 @@ html, body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-color-item:hover {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
 }
 
 .filter-color-item:nth-child(1) .filter-color-value {
@@ -209,7 +215,6 @@ html, body {
   flex-wrap: wrap;
   /* margin-left: 50px;*/
 }
-
 
 
 .filter-goods {
