@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap');
 
 .c {
   background-color: navajowhite;
   height: 100%;
-  font-family: 'Aryzena', sans-serif;
+
 }
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Khand', sans-serif;
 
 }
 
@@ -81,7 +82,7 @@
   border: none;
   margin: 8px 0;
   padding: 10px 15px;
-  font-size: 13px;
+  font-size: 16px;
   border-radius: 8px;
   width: 100%;
   outline: none;
@@ -100,6 +101,7 @@
   left: 0;
   width: 50%;
   z-index: 2;
+  font-size: 16px;
 }
 
 .container.active .sign-in{

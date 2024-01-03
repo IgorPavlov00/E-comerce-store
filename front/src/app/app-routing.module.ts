@@ -19,6 +19,8 @@ import {OtherComponent} from "./other/other.component";
 import {BrowseComponent} from "./browse/browse.component";
 import { ConfirmComponent } from './confirm/confirm.component';
 import {NotifierComponent} from "./notifier/notifier.component";
+import {CardGridComponent} from "./card-grid/card-grid.component";
+import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 
 
 
@@ -46,7 +48,7 @@ const routes: Routes = [
     path: 'browse', component:BrowseComponent
   },
   { path: 'confirm', component: ConfirmComponent },
-  { path:'not',component:NotifierComponent}
+  { path:'cart',component:ShoppingCartComponent}
 
 ];
 

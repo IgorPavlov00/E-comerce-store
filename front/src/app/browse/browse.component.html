@@ -3,56 +3,60 @@
 
 
 <div class="filter">
-  <div class="filter-sidebar">
+  <div class="filter-sidebar" >
 
-    <h6 class="filter-item-title" >Search</h6>
+    <h6 class="filter-item-title">Search</h6>
     <div class="filter-item filter-search">
-      <input type="text" class="filter-search-value">
+      <input type="text" class="filter-search-value" [(ngModel)]="searchText" (input)="search()">
       <i class="fa fa-search filter-search-icon"></i>
     </div>
 
     <h6 class="filter-item-title">Cost</h6>
-<!--    <form [formGroup]="priceForm">-->
+    <!--    <form [formGroup]="priceForm">-->
 
-<!--      <input class="filter-item-title" type="range" id="price" name="price" [min]="minPrice" [max]="maxPrice" formControlName="price" (input)="onPriceChange()">${{ priceForm.value.price }}-->
+    <!--      <input class="filter-item-title" type="range" id="price" name="price" [min]="minPrice" [max]="maxPrice" formControlName="price" (input)="onPriceChange()">${{ priceForm.value.price }}-->
 
-<!--    </form>-->
+    <!--    </form>-->
 
     <div class="separator"></div>
 
     <h6 class="filter-item-title">Colors</h6>
     <div class="filter-item filter-color">
-      <div class="filter-color-item">
+      <div class="filter-color-item" (click)="selectColor('Red')">
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
-      <div class="filter-color-item">
+      <!-- Add similar click events for other colors -->
+
+      <div class="filter-color-item" (click)="selectColor('Green')">
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
-      <div class="filter-color-item">
+      <div class="filter-color-item" (click)="selectColor('Blue')">
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
-      <div class="filter-color-item">
+
+      <div class="filter-color-item" (click)="selectColor('Black')">
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
-      <div class="filter-color-item">
+      <div class="filter-color-item" (click)="selectColor('Orange')" >
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
-      <div class="filter-color-item">
+      <div class="filter-color-item" (click)="selectColor('Grey')">
         <input type="text" class="filter-color-checkbox">
         <label for="" class="filter-color-value"></label>
       </div>
     </div>
 
+
     <div class="separator"></div>
 
     <h6 class="filter-item-title">Brand</h6>
-    <div class="filter-item filter-brand">
-      <div class="filter-checkbox-item">
+    <div class="filter-item filter-brand" >
+      <div class="filter-checkbox-item" >
         <input type="checkbox" class="filter-checkbox-value" name="filter-brand-checkbox" id="filter-brand-1">
         <label for="filter-brand-1" class="filter-checkbox-text">Nike</label>
       </div>
@@ -80,32 +84,22 @@
 
     <div class="separator"></div>
 
-    <h6 class="filter-item-title">Model</h6>
+    <h6 class="filter-item-title">Type</h6>
 
 
     <div class="separator"></div>
 
 
   </div>
-  <div class="cart" [ngClass]="{ 'open': isCartOpen }" *ngIf="cartItems && cartItems.length > 0">
-    <header>
-      <span class="close" (click)="closeMenu()">+</span>
-      <li *ngFor="let cartItem of cartItems">
-        <p><strong>{{ cartItem.price }}</strong> - {{ cartItem.description }} <i class="fa fa-trash" (click)="removeFromCart(cartItem)"></i></p>
-        <img src="{{cartItem.imagePath}}" style="width: 120px" height="140px">
-      </li>
-    </header>
-    <div>
-      <p>Some items in cart...</p>
-    </div>
-    <div *ngIf="cartItems && cartItems.length === 0">
-      <p>Your cart is empty!</p>
-    </div>
-  </div>
+
   <div class="filter-content">
-    <!-- Card section  -->
-    <div class="card" *ngFor="let p of allshoes">
-      <!--card top section-->
+
+
+    <div class="card isotope-item" *ngFor="let p of allshoes" [class.selected-shoe]="isSelectedColor(p.color)" (click)="togglePopOutEffect()">
+      <!-- ... your existing card content ... -->
+
+
+    <!--card top section-->
 
       <div class="card-top"   routerLink="/details/{{p.type}}/{{p.id}}">
         <div class="top-circle"></div>

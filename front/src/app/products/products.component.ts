@@ -27,6 +27,7 @@ export class ProductsComponent {
 
     this.productService.getShoes().subscribe(data => {
       this.allshoes = data.filter(shoe => shoe.price > 130);
+
       console.log(this.allshoes);
     });
 

@@ -1,0 +1,26 @@
+h1 {
+  color: darkred;
+  text-align: center;
+}
+ul li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px;
+  font-size: 20px;
+  text-transform: capitalize;
+  tansition: ease-in-out .3s;
+}
+ul li.active {
+  color: darkorange;
+}
+.item {
+  background-color: #333;
+  text-align: center;
+  color: #fff;
+  height: 200px;
+  width: 30%;
+  overflow: hidden;
+  display: block;
+  margin: 1%;
+  line-height: 200px;
+}

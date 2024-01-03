@@ -25,6 +25,10 @@ import { BrowseComponent } from './browse/browse.component';
 import {ToastrModule} from "ngx-toastr";
 import { NotifierComponent } from './notifier/notifier.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { NgxMasonryModule } from 'ngx-masonry';
+import { CardGridComponent } from './card-grid/card-grid.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CartService } from './cart.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     VerifyComponent,
     OtherComponent,
     BrowseComponent,
-    NotifierComponent
+    NotifierComponent,
+    CardGridComponent,
+    ShoppingCartComponent,
+
 
   ],
     imports: [
@@ -56,12 +63,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         ReactiveFormsModule,
         BrowserAnimationsModule, // required animations module
         ToastrModule.forRoot(), // ToastrModule added
-
+         NgxMasonryModule
 
 
 
     ],
-  providers: [Location],
+  providers: [Location, CartService], // Corrected the providers array
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
