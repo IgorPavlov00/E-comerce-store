@@ -25,6 +25,7 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 
 
 
+
 const routes: Routes = [
   {
 
@@ -48,7 +49,8 @@ const routes: Routes = [
     path: 'browse', component:BrowseComponent
   },
   { path: 'confirm', component: ConfirmComponent },
-  { path:'cart',component:ShoppingCartComponent}
+  { path:'cart',component:ShoppingCartComponent},
+
 
 ];
 

@@ -166,38 +166,14 @@ export class BrowseComponent implements AfterViewInit {
   toggleCart() {
     this.isCartOpen = !this.isCartOpen;
   }
-
-  addToCart(item: Product): void {
-    this.toastr.success(item.description, 'Added to cart');
-    this.cartService.addtoCart(item);
-    this.cartService.getProducts().subscribe((cartItems) => {
-      this.addedItems.emit(cartItems);
-      this.cdr.detectChanges(); // Manually trigger change detection
-    });
+  addToCart(product: any, quantity: number): void { // Accept quantity as a parameter
+    this.toastr.success('Added to cart:'+product.name);
+    this.cartService.addToCart({ ...product, quantity }); // Pass quantity when adding to cart
   }
-
-
-
-
-
-
-
-
-
-  removeFromCart(item: any): void {
-    console.log('Remove from cart:', item);
-    this.cartService.removeCartItem(item);
-    // this.cartItems = this.cartService.getCartItems();
-  }
-
-  completePurchase(): void {
-    // Implement logic for completing the purchase
-  }
-
-
-  closeMenu() {
-    this.isCartOpen = false;
-  }
-
 
 }
+
+
+
+
+

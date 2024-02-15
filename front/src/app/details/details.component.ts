@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService, Product } from '../product.service';
+import {CartService} from "../cart.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-details',
@@ -11,8 +13,13 @@ export class DetailsComponent implements OnInit {
 
   prod: Product | undefined;
   productType: string | undefined;
+  quantity: number = 1;
+  constructor(private activeRoute: ActivatedRoute, private productService: ProductService,private cartService:CartService,private toastr:ToastrService,) {}
 
-  constructor(private activeRoute: ActivatedRoute, private productService: ProductService) {}
+  addToCart(product: any, quantity: number): void { // Accept quantity as a parameter
+    this.toastr.success('Added to cart:'+product.name);
+    this.cartService.addToCart({ ...product, quantity }); // Pass quantity when adding to cart
+  }
 
   ngOnInit(): void {
     const type = this.activeRoute.snapshot.paramMap.get('type');

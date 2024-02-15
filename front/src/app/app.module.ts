@@ -30,6 +30,7 @@ import { CardGridComponent } from './card-grid/card-grid.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CartService } from './cart.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { CartService } from './cart.service';
     NotifierComponent,
     CardGridComponent,
     ShoppingCartComponent,
+
 
 
   ],

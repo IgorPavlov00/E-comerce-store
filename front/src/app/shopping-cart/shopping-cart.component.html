@@ -1,83 +1,45 @@
-<!-- shopping-cart.component.html -->
 <app-navbar></app-navbar>
-<div id="app">
-  <!-- Header -->
-  <header class="container">
-    <h1>Shopping Cart</h1>
-    <ul class="breadcrumb">
-      <li>Home</li>
-      <li>Shopping Cart</li>
-    </ul>
-    <span class="count">{{ itemCount() }} items in the bag</span>
-  </header>
-  <!-- End Header -->
 
-  <!-- Product List -->
-  <section class="container">
-    <div *ngIf="products.length > 0">
-      <ul class="products">
-        <li class="row" *ngFor="let product of products; let index = index">
-          <div class="col left">
-            <div class="thumbnail">
-              <a href="#">
-                <img [src]="product.imagePath" [alt]="product.description" />
-              </a>
-            </div>
-            <div class="detail">
-              <div class="name"><a href="#">{{ product.name }}</a></div>
-              <div class="description">{{ product.description }}</div>
-              <div class="price">{{ formatCurrency(product.price) }}</div>
-            </div>
-          </div>
+<h1 style="margin-top: 100px;margin-left: 50px;margin-bottom: 20px">Shopping Cart</h1>
 
-          <div class="col right">
-            <div class="quantity">
-              <input
-                type="number"
-                class="quantity"
-                step="1"
-                [value]="product.quantity"
-                (input)="updateQuantity(index, $event)"
-                (blur)="checkQuantity(index, $event)"
-              />
-            </div>
+<div class="shopping-cart">
 
-            <div class="remove">
-              <svg (click)="removeItem(index)" version="1.1" class="close" xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" enable-background="new 0 0 60 60" xml:space="preserve">
-                <polygon points="38.936,23.561 36.814,21.439 30.562,27.691 24.311,21.439 22.189,23.561 28.441,29.812 22.189,36.064 24.311,38.186 30.562,31.934 36.814,38.186 38.936,36.064 32.684,29.812"></polygon>
-              </svg>
-            </div>
-          </div>
-        </li>
-      </ul>
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product"  *ngFor="let item of cartItems; let i = index">
+    <div class="product-image">
+      <img src="{{item.imagePath}}">
     </div>
-    <div *ngIf="products.length === 0" class="empty-product">
-      <h3>There are no products in your cart.</h3>
-      <button>Shopping now</button>
+    <div class="product-details">
+      <div class="product-title">{{item.name}}</div>
+      <p class="product-description">{{item.description}}</p>
     </div>
-  </section>
-  <!-- End Product List -->
+    <div class="product-price">{{item.price }}</div>
+    <div class="product-quantity">
+      <input type="number" [(ngModel)]="item.quantity" (change)="updatePrice(item)" min="1" value="1">    </div>
+    <div class="product-removal">
+      <button class="remove-product" (click)="removeFromCart(i)">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">{{ calculateLinePrice(item)  }}</div>
+  </div>
 
-  <!-- Summary -->
-  <section class="container" *ngIf="products.length > 0">
-    <div class="promotion">
-      <label for="promo-code">Have A Promo Code?</label>
-      <input type="text" id="promo-code" [(ngModel)]="promoCode" />
-      <button type="button" (click)="checkPromoCode()">Apply</button>
+  <div class="totals">
+    <div class="totals-item">
+      <label>Final price</label>
+      <div class="totals-value" id="cart-subtotal">{{ calculateSubtotal()  }}</div>
     </div>
+    <!-- Other totals items -->
+  </div>
 
-    <div class="summary">
-      <ul>
-        <li>Subtotal <span>{{ formatCurrency(subTotal()) }}</span></li>
-        <li *ngIf="discount > 0">Discount <span>{{ formatCurrency(discountPrice()) }}</span></li>
-        <li>Tax <span>{{ formatCurrency(tax) }}</span></li>
-        <li class="total">Total <span>{{ formatCurrency(totalPrice()) }}</span></li>
-      </ul>
-    </div>
+  <button class="checkout">Checkout</button>
 
-    <div class="checkout">
-      <button type="button">Check Out</button>
-    </div>
-  </section>
-  <!-- End Summary -->
 </div>
