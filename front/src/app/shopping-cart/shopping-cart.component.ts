@@ -32,5 +32,31 @@ export class ShoppingCartComponent  {
   calculateSubtotal(): number {
     return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   }
+  calculateShipping(): string {
+    const total = this.calculateSubtotal();
+    if (total > 150) {
+      return 'Free Shipping';
+    } else if (total < 20) {
+      return '$10 Shipping'; // Adjust the shipping cost as needed
+    } else {
+      return '$20 Shipping'; // Adjust the shipping cost as needed
+    }
+  }
+  calculateTotalPriceWithShipping(): number {
+    const subtotal = this.calculateSubtotal();
+    const shipping = this.calculateShippingCost();
+    const total = subtotal + shipping;
+    return total;
+  }
 
+  calculateShippingCost(): number {
+    const subtotal = this.calculateSubtotal();
+    if (subtotal >= 150) {
+      return 0; // Free shipping
+    } else if (subtotal < 20) {
+      return 10; // $10 shipping
+    } else {
+      return 20; // $20 shipping
+    }
+  }
 }

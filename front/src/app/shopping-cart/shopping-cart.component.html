@@ -34,8 +34,16 @@
 
   <div class="totals">
     <div class="totals-item">
-      <label>Final price</label>
-      <div class="totals-value" id="cart-subtotal">{{ calculateSubtotal()  }}</div>
+      <label>Subtotal</label>
+      <div class="totals-value">{{ calculateSubtotal() }}$</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value">{{ calculateShipping() }} </div>
+    </div>
+    <div class="totals-item">
+      <label>Total</label>
+      <div class="totals-value">{{ calculateTotalPriceWithShipping() }}$</div>
     </div>
     <!-- Other totals items -->
   </div>
