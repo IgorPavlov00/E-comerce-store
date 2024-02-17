@@ -10,7 +10,13 @@
     <ul class="navbar-menu">
       <li><a href="#">Home</a></li>
       <li><a href="/browse">Browse</a></li>
-      <li><a href="/cart">Your Cart</a></li>
+      <li>
+        <a href="/cart">Your Cart
+          <img src="assets/images/shopping-cart%20(1).png" width="40px" height="30px" style="margin-top: 20px"/>
+          <span style="border-radius: 50%; font-family: 'Arial Black', sans-serif;  background-color: white; color: black; padding: 4px 4px 4px 4px; font-size: 12px; width: 15px; height: 14px; line-height: 20px; text-align: center; display: inline-block; position: relative; top: -17px; left: -4px;" [style.display]="cartItemCount === 0 ? 'none' : 'inline-block'">{{cartItemCount}}</span>
+        </a>
+      </li>
+
       <li><a href="#">Profil</a></li>
       <li><a href="/login" >Login</a></li>
 

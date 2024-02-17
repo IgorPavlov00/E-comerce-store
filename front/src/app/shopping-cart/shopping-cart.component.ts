@@ -3,6 +3,8 @@
 import {ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import { CartService } from '../cart.service';
 import { Subscription } from 'rxjs';
+import {HttpClient} from "@angular/common/http";
+import {loadStripe} from "@stripe/stripe-js";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,13 +14,14 @@ import { Subscription } from 'rxjs';
 export class ShoppingCartComponent  {
   cartItems: any[];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,private http: HttpClient) {
     this.cartItems = this.cartService.getCartItems();
   }
 
   removeFromCart(index: number): void {
     this.cartService.removeFromCart(index);
     this.cartItems = this.cartService.getCartItems(); // Update cart items after removal
+
   }
 
   updatePrice(item: any) {
@@ -58,5 +61,20 @@ export class ShoppingCartComponent  {
     } else {
       return 20; // $20 shipping
     }
+  }
+
+  checkout() {
+     this.http.post('http://localhost:4242/checkout',{
+       items:this.cartItems
+     }).subscribe(async (res:any)=>{
+       let stripe=await loadStripe('pk_test_51OkQ5MBFPXnaeo7VDSoSUPmG7R3TrlYlSTpS0vZP72IZLD5CwZaRrRhzky3FGos7qv0ZO5PBbcKdn2SuSmQ6kNRN008Gk2k0rn');
+       stripe?.redirectToCheckout({
+          sessionId:res.id
+       })
+     })
+  }
+
+  empty() {
+    this.cartService.emptyCart();
   }
 }

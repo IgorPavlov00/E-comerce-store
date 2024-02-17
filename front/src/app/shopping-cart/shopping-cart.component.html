@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<h1 style="margin-top: 100px;margin-left: 50px;margin-bottom: 20px">Shopping Cart</h1>
+<h1 style="margin-top: 100px;margin-left: 50px;margin-bottom: 20px">Shopping Cart </h1>
 
 <div class="shopping-cart">
 
@@ -21,7 +21,7 @@
       <div class="product-title">{{item.name}}</div>
       <p class="product-description">{{item.description}}</p>
     </div>
-    <div class="product-price">{{item.price }}</div>
+    <div class="product-price">${{item.price }}</div>
     <div class="product-quantity">
       <input type="number" [(ngModel)]="item.quantity" (change)="updatePrice(item)" min="1" value="1">    </div>
     <div class="product-removal">
@@ -29,13 +29,13 @@
         Remove
       </button>
     </div>
-    <div class="product-line-price">{{ calculateLinePrice(item)  }}</div>
+    <div class="product-line-price">${{ calculateLinePrice(item)  }}</div>
   </div>
 
   <div class="totals">
     <div class="totals-item">
       <label>Subtotal</label>
-      <div class="totals-value">{{ calculateSubtotal() }}$</div>
+      <div class="totals-value">${{ calculateSubtotal() }} </div>
     </div>
     <div class="totals-item">
       <label>Shipping</label>
@@ -43,11 +43,11 @@
     </div>
     <div class="totals-item">
       <label>Total</label>
-      <div class="totals-value">{{ calculateTotalPriceWithShipping() }}$</div>
+      <div class="totals-value">${{ calculateTotalPriceWithShipping() }}</div>
     </div>
     <!-- Other totals items -->
   </div>
-
-  <button class="checkout">Checkout</button>
+<!--  <button  (click)="empty()" class="remove-product">empty cart</button>-->
+  <button  (click)="checkout()" class="checkout">Checkout</button>
 
 </div>
