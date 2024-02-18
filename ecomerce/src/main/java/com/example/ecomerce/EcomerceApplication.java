@@ -8,11 +8,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
 
@@ -26,7 +30,15 @@ public class EcomerceApplication {
 		SpringApplication.run(EcomerceApplication.class, args);
 	}
 
-
+	@Configuration
+	public class WebConfig implements WebMvcConfigurer {
+		@Override
+		public void addResourceHandlers(ResourceHandlerRegistry registry) {
+			registry.addResourceHandler("/images/**")
+					.addResourceLocations("classpath:/static/assets/images/")
+					.setCachePeriod(0);
+		}
+	}
 
 
 //	@EventListener(ApplicationReadyEvent.class)

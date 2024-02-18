@@ -64,15 +64,31 @@ export class ShoppingCartComponent  {
   }
 
   checkout() {
-     this.http.post('http://localhost:4242/checkout',{
-       items:this.cartItems
-     }).subscribe(async (res:any)=>{
-       let stripe=await loadStripe('pk_test_51OkQ5MBFPXnaeo7VDSoSUPmG7R3TrlYlSTpS0vZP72IZLD5CwZaRrRhzky3FGos7qv0ZO5PBbcKdn2SuSmQ6kNRN008Gk2k0rn');
-       stripe?.redirectToCheckout({
-          sessionId:res.id
-       })
-     })
+    this.http.post('http://localhost:4242/checkout', { items: this.cartItems })
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe('pk_test_51OkQ5MBFPXnaeo7VDSoSUPmG7R3TrlYlSTpS0vZP72IZLD5CwZaRrRhzky3FGos7qv0ZO5PBbcKdn2SuSmQ6kNRN008Gk2k0rn');
+        stripe?.redirectToCheckout({
+          sessionId: res.id
+        });
+
+        // Call makeTransaction inside the subscribe block to ensure it's executed after the checkout request is completed
+        this.cartService.makeTransaction(this.cartItems).subscribe(
+          response => {
+            console.log('Transaction successful:', response);
+            // Now, empty the cart after both checkout and transaction are completed
+            this.cartService.emptyCart();
+            // Handle successful transaction response, e.g., navigate to a success page
+          },
+          error => {
+            console.error('Transaction failed:', error);
+            // Handle error response, e.g., display an error message to the user
+          }
+        );
+      });
+    this.cartService.emptyCart();
   }
+
+
 
   empty() {
     this.cartService.emptyCart();
