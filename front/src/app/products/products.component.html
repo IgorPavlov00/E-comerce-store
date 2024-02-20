@@ -11,7 +11,7 @@
   </div>
   <div class="wrapper" *ngFor="let p of alljeans">
     <div class="product-img">
-      <img src="{{p.imagePath}}" height="320" width="320">
+      <img src="{{p.imagePath}}" [routerLink]="'/details/' + p.type + '/' + p.id" height="320" width="320">
     </div>
     <div class="product-info">
       <div class="product-text">
@@ -21,14 +21,17 @@
       </div>
       <div class="product-price-btn">
         <p><span>{{p.price}}</span>$</p>
-        <button type="button" routerLink="/details/{{p.type}}/{{p.id}}" > buy now</button>
+        <button type="button" *ngIf="isLoggedIn; else viewNowBtn" (click)="checkout(p,1)">Buy Now</button>
+        <ng-template #viewNowBtn>
+          <button type="button" [routerLink]="'/details/' + p.type + '/' + p.id">View Now</button>
+        </ng-template>
 
       </div>
     </div>
   </div>
   <div class="wrapper" *ngFor="let p of allshoes">
     <div class="product-img">
-      <img src="{{p.imagePath}}" height="320" width="250">
+      <img src="{{p.imagePath}}" [routerLink]="'/details/' + p.type + '/' + p.id" height="320" width="250">
     </div>
     <div class="product-info">
       <div class="product-text">
@@ -38,7 +41,10 @@
       </div>
       <div class="product-price-btn">
         <p><span>{{p.price}}</span>$</p>
-        <button type="button" routerLink="/details/{{p.type}}/{{p.id}}">buy now</button>
+        <button type="button" *ngIf="isLoggedIn; else viewNowBtn" (click)="checkout(p,1)">Buy Now</button>
+        <ng-template #viewNowBtn>
+          <button type="button" [routerLink]="'/details/' + p.type + '/' + p.id">View Now</button>
+        </ng-template>
 
       </div>
     </div>

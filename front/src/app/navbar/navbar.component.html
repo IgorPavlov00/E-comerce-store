@@ -19,7 +19,8 @@
       </li>
 
       <li><a href="#">Profil</a></li>
-      <li><a href="/login" >Login</a></li>
+      <li *ngIf="!isLoggedIn"><a href="/login">Login</a></li>
+      <li *ngIf="isLoggedIn"><a href="/" (click)="logout()">Logout</a></li>
 
     </ul>
 

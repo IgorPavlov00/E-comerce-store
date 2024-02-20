@@ -616,11 +616,19 @@ main .container .product-main .product-footer .footer-price button:hover {
   color: #fff;
 
 }
+.purchase-info .btn:hover{
+  background-color: #dac7c2;
+}
 .purchase-info .btn:first-of-type{
   background: #20daa6;
 }
 .purchase-info .btn:last-of-type{
   background: #f64749;
+}
+
+.purchase-info .btn:last-of-type:hover{
+  background-color: #651d0d;
+ 
 }
 .purchase-info .btn:hover{
   opacity: 0.9;

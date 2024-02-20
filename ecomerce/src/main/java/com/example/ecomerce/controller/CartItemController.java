@@ -99,12 +99,54 @@ public class CartItemController {
             attachmentDataList.add(itemImageData);
             attachmentNames.add("cart_item_" + UUID.randomUUID() + ".png");
         }
-        String htmlContent = generateHtmlContent(cartItems,attachmentDataList);
+//        String htmlContent = generateHtmlContent2(cartItems);
         // Send the email with HTML content and all image attachments
-        emailSenderService.sendHtmlEmailWithImageAttachments("igorpavlov106@gmail.com", "Your Order Confirmation", htmlContent, attachmentDataList, attachmentNames);
+        emailSenderService.sendHtmlEmailWithImageAttachments("igorpavlov106@gmail.com", "Your Order Confirmation", cartItems,attachmentDataList, attachmentNames);
 
         return new ResponseEntity<>("Cart items added successfully", HttpStatus.OK);
     }
+
+    private String generateHtmlContent2(List<CartItemDto> cartItems) {
+        StringBuilder htmlContentBuilder = new StringBuilder();
+        htmlContentBuilder.append("<html><body>");
+        htmlContentBuilder.append("<div style='text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 5px;background-color:bisque;'>");
+        htmlContentBuilder.append("<h1>Thank you for shopping at our store!</h1>");
+
+        // Add image for the header
+        String imageUrl = "https://www.creativefabrica.com/wp-content/uploads/2018/10/Shopping-cart-logo-by-DEEMKA-STUDIO-580x406.jpg";
+        htmlContentBuilder.append("<img src='" + imageUrl + "' alt='Cart Image' style='max-width: 90%; max-height:40%; border-radius:5px;'>");
+
+        htmlContentBuilder.append("<br><br>");
+        htmlContentBuilder.append("<p>You ordered:</p>");
+        htmlContentBuilder.append("<br><br>");
+
+        // Table header
+        htmlContentBuilder.append("<table style='width:100%;'>");
+        htmlContentBuilder.append("<tr>");
+        htmlContentBuilder.append("<th style='width: 25%; text-align:center;'>Name</th>");
+        htmlContentBuilder.append("<th style='width: 25%; text-align:center;'>Description</th>");
+        htmlContentBuilder.append("<th style='width: 25%; text-align:center;'>Price</th>");
+        htmlContentBuilder.append("<th style='width: 25%; text-align:center;'>Image</th>");
+        htmlContentBuilder.append("</tr>");
+
+        String images="jordan-3-red-removebg-preview.png";        // Table rows for cart items
+        for (CartItemDto cartItem : cartItems) {
+            System.out.println(cartItem.getImagePath());
+            htmlContentBuilder.append("<tr>");
+            htmlContentBuilder.append("<td>").append(cartItem.getName()).append("</td>");
+            htmlContentBuilder.append("<td>").append(cartItem.getDescription()).append("</td>");
+            htmlContentBuilder.append("<td>").append(cartItem.getPrice()).append("$</td>");
+            htmlContentBuilder.append("<td><img src='").append(images).append("' alt='Product Image' style='max-width: 100px; max-height: 100px;'></td>");
+            htmlContentBuilder.append("</tr>");
+        }
+
+        // Close table
+        htmlContentBuilder.append("</table>");
+
+        htmlContentBuilder.append("</div></body></html>");
+        return htmlContentBuilder.toString();
+    }
+
 
 //    private String generateHtmlContent(List<CartItemDto> cartItems) {
 //        StringBuilder htmlContentBuilder = new StringBuilder();
@@ -211,9 +253,10 @@ public class CartItemController {
         // Table header
         htmlContentBuilder.append("<table style='width:100%;'>");
         htmlContentBuilder.append("<tr>");
-        htmlContentBuilder.append("<th style='width: 33.33%; text-align:center;'>Name</th>");
-        htmlContentBuilder.append("<th style='width: 33.33%; text-align:center;'>Description</th>");
-        htmlContentBuilder.append("<th style='width: 33.33%; text-align:center;'>Price</th>");
+        htmlContentBuilder.append("<th style='width: 25.33%; text-align:center;'>Name</th>");
+        htmlContentBuilder.append("<th style='width: 25.33%; text-align:center;'>Description</th>");
+        htmlContentBuilder.append("<th style='width: 25.33%; text-align:center;'>Price</th>");
+        htmlContentBuilder.append("<th style='width: 25.33%; text-align:center;'>Image</th>");
         htmlContentBuilder.append("</tr>");
 //        htmlContentBuilder.append("<th>Image</th>");
         htmlContentBuilder.append("</tr>");
@@ -223,11 +266,13 @@ public class CartItemController {
             CartItemDto cartItem = cartItems.get(i);
             byte[] imageData = attachmentDataList.get(i);
             String base64Image = Base64.getEncoder().encodeToString(imageData);
-
+            System.out.println(cartItem);
             htmlContentBuilder.append("<tr>");
-            htmlContentBuilder.append("<td style='width: 33.33%; text-align:center;'>").append(cartItem.getName()).append("</td>");
-            htmlContentBuilder.append("<td style='width: 33.33%; text-align:center;'>").append(cartItem.getDescription()).append("</td>");
-            htmlContentBuilder.append("<td style='width: 33.33%; text-align:center;'>").append(cartItem.getPrice()).append("$</td>");
+            htmlContentBuilder.append("<td style='width: 25.33%; text-align:center;'>").append(cartItem.getName()).append("</td>");
+            htmlContentBuilder.append("<td style='width: 25.33%; text-align:center;'>").append(cartItem.getDescription()).append("</td>");
+            htmlContentBuilder.append("<td style='width: 25.33%; text-align:center;'>").append(cartItem.getPrice()).append("$</td>");
+            htmlContentBuilder.append("<td style='width: 25.33%; text-align:center;'><img src='").append(cartItem.getImagePath()).append("' alt='Product Image' style='max-width: 100px; max-height: 100px;'></td>");
+//            htmlContentBuilder.append("</tr>");            htmlContentBuilder.append("</tr>");
             htmlContentBuilder.append("</tr>");
         }
 

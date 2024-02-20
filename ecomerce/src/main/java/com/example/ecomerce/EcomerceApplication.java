@@ -34,8 +34,8 @@ public class EcomerceApplication {
 	public class WebConfig implements WebMvcConfigurer {
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/images/**")
-					.addResourceLocations("classpath:/static/assets/images/")
+			registry.addResourceHandler("/**")
+					.addResourceLocations("classpath:/static/","classpath:/image/")
 					.setCachePeriod(0);
 		}
 	}

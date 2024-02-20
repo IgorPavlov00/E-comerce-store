@@ -1,6 +1,7 @@
 package com.example.ecomerce.controller;
 
 
+import com.example.ecomerce.dto.LoginDTO;
 import com.example.ecomerce.dto.RegisterDTO;
 import com.example.ecomerce.email.EmailSenderService;
 import com.example.ecomerce.model.Shoes;
@@ -9,6 +10,7 @@ import com.example.ecomerce.model.VerificationToken;
 import com.example.ecomerce.service.ShoeService;
 import com.example.ecomerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -65,6 +67,16 @@ public class UserController {
         return ResponseEntity.ok(k);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {
+        User user = userService.login(loginDTO.getEmail(), loginDTO.getPassword());
+        if (user != null) {
+            System.out.println(user);
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
 //    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<?> registerUser(@RequestBody RegisterDTO user) {
 //        User k = new User(user);

@@ -5,6 +5,7 @@ import { CartService } from '../cart.service';
 import { Subscription } from 'rxjs';
 import {HttpClient} from "@angular/common/http";
 import {loadStripe} from "@stripe/stripe-js";
+import {UserLogin} from "../UserLogin";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,6 +14,7 @@ import {loadStripe} from "@stripe/stripe-js";
 })
 export class ShoppingCartComponent  {
   cartItems: any[];
+  userLog: UserLogin = new UserLogin();
 
   constructor(private cartService: CartService,private http: HttpClient) {
     this.cartItems = this.cartService.getCartItems();

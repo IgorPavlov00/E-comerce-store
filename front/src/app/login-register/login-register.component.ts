@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserRegister } from '../UserRegister';
 import { UserRegisterService } from '../user-register.service';
 import {ToastrService} from "ngx-toastr";
+import { UserLogin } from '../UserLogin';
 
 @Component({
   selector: 'app-login-register',
@@ -13,15 +14,18 @@ export class LoginRegisterComponent implements OnInit {
   container!: HTMLElement;
   registerBtn!: HTMLElement;
   loginBtn!: HTMLElement;
-  showModal: boolean = false; // Add this line to track modal visibility
 
+  showModal: boolean = false; // Add this line to track modal visibility
+  userLog: UserLogin = new UserLogin();
   user: UserRegister = new UserRegister();
+  isLoggedIn: boolean = false; // Add this line to declare the isLoggedIn property
 
   constructor(
     private userRegisterService: UserRegisterService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+
   ) {}
 
   register() {
@@ -46,7 +50,23 @@ export class LoginRegisterComponent implements OnInit {
     // this.router.navigate(['/verify']);
     // this.showModal = true; // Show the modal after registration
   }
-
+  signIn() {
+    this.userRegisterService.login(this.userLog)
+      .subscribe(
+        response => {
+          // Handle successful login
+          console.log('Login successful');
+          localStorage.setItem('isLoggedIn', 'true');
+          // Update isLoggedIn variable
+          this.isLoggedIn = true;
+          this.router.navigate(['/']);
+        },
+        error => {
+          // Handle login error
+          console.log("error");
+        }
+      );
+  }
   ngOnInit(): void {
     this.container = document.getElementById('container')!;
     this.registerBtn = document.getElementById('register')!;

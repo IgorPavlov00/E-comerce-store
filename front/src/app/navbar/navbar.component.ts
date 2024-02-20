@@ -23,7 +23,7 @@ import { CartService } from '../cart.service';
 export class NavbarComponent {
   cartItemCount: number = 0;
   animateCart: boolean = false; // Add animateCart variable
-
+  isLoggedIn: boolean = false; // Initialize to false by default
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -33,6 +33,12 @@ export class NavbarComponent {
       this.animateCart = true; // Trigger animation
       setTimeout(() => this.animateCart = false, 300); // Reset animation after 300ms
     });
-  }
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';  }
 
+  logout(): void {
+    // Remove the login status from local storage
+    localStorage.removeItem('isLoggedIn');
+    // Update the login status variable
+    this.isLoggedIn = false;
+  }
 }
