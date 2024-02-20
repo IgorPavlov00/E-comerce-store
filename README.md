@@ -2,7 +2,8 @@
 E-comerce store
 
 
-![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/a8dc9e2d-9b3d-4942-9aa9-7ee17fdee0b4)
+![image](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/2f53a6d0-949a-4b80-abd8-27701c5d96b8)
+
 
 
 
