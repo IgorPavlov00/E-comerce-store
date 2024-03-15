@@ -1,5 +1,5 @@
 # E-comerce-store
-This is an e-commerce shoo that provides basic items including shoes, shirts, and pants. Each product listing provides detailed descriptions, images, available sizes, and prices,
+This is an e-commerce shop that provides basic items including shoes, shirts, and pants. Each product listing provides detailed descriptions, images, available sizes, and prices,
 ensuring customers have all necessary information before making a purchase decision.
 
 Technologies Used:
