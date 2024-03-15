@@ -1,6 +1,9 @@
 # E-comerce-store
-This is an e-commerce shoo that provides basic items including shoes, shirts, and pants. Each product listing provides detailed descriptions, images, available sizes, and prices, ensuring customers have all necessary information before making a purchase decision.
+This is an e-commerce shoo that provides basic items including shoes, shirts, and pants. Each product listing provides detailed descriptions, images, available sizes, and prices,
+ensuring customers have all necessary information before making a purchase decision.
+
 Technologies Used:
+
 Spring Boot: Backend framework for building robust Java applications with easy database integration.
 Angular: Frontend framework for creating dynamic and responsive user interfaces.
 Node.js: JavaScript runtime for server-side applications, facilitating Stripe payment integration.
