@@ -25,7 +25,6 @@ A full-stack e-commerce platform featuring fashion products with secure payment 
 
 **Backend**  
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=spring&logoColor=white)  
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)  
 
 **Database**  
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)  
@@ -36,7 +35,7 @@ A full-stack e-commerce platform featuring fashion products with secure payment 
 ---
 
 ## 📸 Screenshots  
-| Product Listing | Checkout Page |  
+| Landing Page | Product Page |  
 |-----------------|---------------|  
 | ![Product Listing](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/2f53a6d0-949a-4b80-abd8-27701c5d96b8) | ![Checkout](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/ea9564d5-14e8-423c-a2e9-7b3d5794fbac) |  
 
@@ -46,7 +45,6 @@ A full-stack e-commerce platform featuring fashion products with secure payment 
 
 ### Prerequisites  
 - Java 17+  
-- Node.js 16+  
 - PostgreSQL 14+  
 - Angular CLI  
 
