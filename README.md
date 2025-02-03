@@ -13,7 +13,6 @@ A full-stack e-commerce platform featuring fashion products with secure payment 
 - **🛒 Shopping Cart**: Persistent cart functionality across sessions  
 - **💳 Secure Payments**: Stripe integration for transaction processing  
 - **📦 Inventory Management**: Size availability tracking  
-- **📱 Responsive Design**: Mobile-optimized shopping experience  
 - **🔐 User Authentication**: Secure login and account management  
 
 ---
