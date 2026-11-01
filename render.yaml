@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: sole-seam
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: sole-seam-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: sole-seam-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: sole-seam-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: sole-seam-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: sole-seam-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      # Render asks for this when the Blueprint is first created.
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      # Turns on email confirmation. Resend's shared sender only delivers to the
+      # Resend account's own address; use a verified domain to reach customers.
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        value: onboarding@resend.dev
+
+databases:
+  - name: sole-seam-db
+    plan: free
+    databaseName: ecomerce
+    user: ecomerce
