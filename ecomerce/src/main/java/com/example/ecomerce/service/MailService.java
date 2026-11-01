@@ -37,35 +37,35 @@ public class MailService {
 
     private final JavaMailSender sender;
     private final boolean smtpEnabled;
-    private final String brevoApiKey;
-    private final RestClient brevo;
+    private final String resendApiKey;
+    private final RestClient resend;
     private final String from;
     private final String baseUrl;
 
     public MailService(JavaMailSender sender,
                        @Value("${app.mail.enabled}") boolean smtpEnabled,
-                       @Value("${app.mail.brevo-api-key:}") String brevoApiKey,
-                       @Value("${app.mail.brevo-url:https://api.brevo.com/v3/smtp/email}") String brevoUrl,
+                       @Value("${app.mail.resend-api-key:}") String resendApiKey,
+                       @Value("${app.mail.resend-url:https://api.resend.com/emails}") String resendUrl,
                        @Value("${app.mail.from}") String from,
                        @Value("${app.base-url}") String baseUrl) {
         this.sender = sender;
         this.smtpEnabled = smtpEnabled;
-        this.brevoApiKey = brevoApiKey;
+        this.resendApiKey = resendApiKey;
         SimpleClientHttpRequestFactory timeouts = new SimpleClientHttpRequestFactory();
         timeouts.setConnectTimeout(5_000);
         timeouts.setReadTimeout(10_000);
-        this.brevo = RestClient.builder().baseUrl(brevoUrl).requestFactory(timeouts).build();
+        this.resend = RestClient.builder().baseUrl(resendUrl).requestFactory(timeouts).build();
         this.from = from;
         this.baseUrl = baseUrl;
     }
 
     /** When true, new accounts must confirm their email before they can sign in. */
     public boolean isEnabled() {
-        return usesBrevo() || smtpEnabled;
+        return usesResend() || smtpEnabled;
     }
 
-    private boolean usesBrevo() {
-        return !brevoApiKey.isBlank();
+    private boolean usesResend() {
+        return !resendApiKey.isBlank();
     }
 
     public static List<OrderLine> linesOf(Order order) {
@@ -116,8 +116,8 @@ public class MailService {
     }
 
     private void send(String to, String subject, String html) {
-        if (usesBrevo()) {
-            sendWithBrevo(to, subject, html);
+        if (usesResend()) {
+            sendWithResend(to, subject, html);
         } else if (smtpEnabled) {
             sendWithSmtp(to, subject, html);
         } else {
@@ -125,16 +125,16 @@ public class MailService {
         }
     }
 
-    /** Brevo's API runs over HTTPS, so it works on hosts that block SMTP ports, like Render's free plan. */
-    private void sendWithBrevo(String to, String subject, String html) {
+    /** Resend's API runs over HTTPS, so it works on hosts that block SMTP ports, like Render's free plan. */
+    private void sendWithResend(String to, String subject, String html) {
         Map<String, Object> message = Map.of(
-                "sender", Map.of("name", "Sole&Seam", "email", from),
-                "to", List.of(Map.of("email", to)),
+                "from", "Sole&Seam <" + from + ">",
+                "to", List.of(to),
                 "subject", subject,
-                "htmlContent", html);
+                "html", html);
         try {
-            brevo.post()
-                    .header("api-key", brevoApiKey)
+            resend.post()
+                    .header("Authorization", "Bearer " + resendApiKey)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(message)
                     .retrieve()

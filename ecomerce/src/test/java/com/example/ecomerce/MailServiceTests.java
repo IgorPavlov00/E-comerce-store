@@ -22,21 +22,21 @@ class MailServiceTests {
 
     private HttpServer server;
     private String url;
-    private final AtomicReference<String> apiKey = new AtomicReference<>();
+    private final AtomicReference<String> authorization = new AtomicReference<>();
     private final AtomicReference<String> body = new AtomicReference<>();
-    private final AtomicInteger status = new AtomicInteger(201);
+    private final AtomicInteger status = new AtomicInteger(200);
 
     @BeforeEach
-    void startFakeBrevo() throws Exception {
+    void startFakeResend() throws Exception {
         server = HttpServer.create(new InetSocketAddress("localhost", 0), 0);
-        server.createContext("/send", exchange -> {
-            apiKey.set(exchange.getRequestHeaders().getFirst("api-key"));
+        server.createContext("/emails", exchange -> {
+            authorization.set(exchange.getRequestHeaders().getFirst("Authorization"));
             body.set(new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8));
             exchange.sendResponseHeaders(status.get(), -1);
             exchange.close();
         });
         server.start();
-        url = "http://localhost:" + server.getAddress().getPort() + "/send";
+        url = "http://localhost:" + server.getAddress().getPort() + "/emails";
     }
 
     @AfterEach
@@ -49,18 +49,18 @@ class MailServiceTests {
     }
 
     @Test
-    void sendsConfirmationLinkThroughBrevo() throws Exception {
+    void sendsConfirmationLinkThroughResend() throws Exception {
         JavaMailSender smtp = mock(JavaMailSender.class);
-        MailService mail = service(smtp, "brevo-key");
+        MailService mail = service(smtp, "resend-key");
         assertThat(mail.isEnabled()).isTrue();
 
         mail.sendVerification("ana@example.com", "<Ana>", "token-123");
 
-        assertThat(apiKey.get()).isEqualTo("brevo-key");
+        assertThat(authorization.get()).isEqualTo("Bearer resend-key");
         JsonNode sent = new ObjectMapper().readTree(body.get());
-        assertThat(sent.at("/sender/email").asText()).isEqualTo("shop@example.com");
-        assertThat(sent.at("/to/0/email").asText()).isEqualTo("ana@example.com");
-        String html = sent.get("htmlContent").asText();
+        assertThat(sent.get("from").asText()).isEqualTo("Sole&Seam <shop@example.com>");
+        assertThat(sent.at("/to/0").asText()).isEqualTo("ana@example.com");
+        String html = sent.get("html").asText();
         assertThat(html).contains("https://shop.test/confirm?token=token-123");
         assertThat(html).contains("&lt;Ana&gt;").doesNotContain("<Ana>");
         verifyNoInteractions(smtp);
@@ -68,7 +68,7 @@ class MailServiceTests {
 
     @Test
     void aRejectedSendDoesNotThrow() {
-        status.set(401);
+        status.set(403);
         service(mock(JavaMailSender.class), "bad-key").sendVerification("ana@example.com", "Ana", "token");
         assertThat(body.get()).isNotNull();
     }

@@ -32,11 +32,12 @@ services:
       # Render asks for this when the Blueprint is first created.
       - key: STRIPE_SECRET_KEY
         sync: false
-      # Turns on email confirmation. The sender must be verified in Brevo.
-      - key: BREVO_API_KEY
+      # Turns on email confirmation. Resend's shared sender only delivers to the
+      # Resend account's own address; use a verified domain to reach customers.
+      - key: RESEND_API_KEY
         sync: false
       - key: MAIL_FROM
-        value: ecomerceapp2023@gmail.com
+        value: onboarding@resend.dev
 
 databases:
   - name: sole-seam-db
