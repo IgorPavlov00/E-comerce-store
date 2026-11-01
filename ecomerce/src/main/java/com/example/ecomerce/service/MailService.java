@@ -7,14 +7,19 @@ import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static org.springframework.web.util.HtmlUtils.htmlEscape;
 
@@ -31,22 +36,36 @@ public class MailService {
     private static final String ACCENT = "#d9400f";
 
     private final JavaMailSender sender;
-    private final boolean enabled;
+    private final boolean smtpEnabled;
+    private final String brevoApiKey;
+    private final RestClient brevo;
     private final String from;
     private final String baseUrl;
 
     public MailService(JavaMailSender sender,
-                       @Value("${app.mail.enabled}") boolean enabled,
+                       @Value("${app.mail.enabled}") boolean smtpEnabled,
+                       @Value("${app.mail.brevo-api-key:}") String brevoApiKey,
+                       @Value("${app.mail.brevo-url:https://api.brevo.com/v3/smtp/email}") String brevoUrl,
                        @Value("${app.mail.from}") String from,
                        @Value("${app.base-url}") String baseUrl) {
         this.sender = sender;
-        this.enabled = enabled;
+        this.smtpEnabled = smtpEnabled;
+        this.brevoApiKey = brevoApiKey;
+        SimpleClientHttpRequestFactory timeouts = new SimpleClientHttpRequestFactory();
+        timeouts.setConnectTimeout(5_000);
+        timeouts.setReadTimeout(10_000);
+        this.brevo = RestClient.builder().baseUrl(brevoUrl).requestFactory(timeouts).build();
         this.from = from;
         this.baseUrl = baseUrl;
     }
 
+    /** When true, new accounts must confirm their email before they can sign in. */
     public boolean isEnabled() {
-        return enabled;
+        return usesBrevo() || smtpEnabled;
+    }
+
+    private boolean usesBrevo() {
+        return !brevoApiKey.isBlank();
     }
 
     public static List<OrderLine> linesOf(Order order) {
@@ -97,10 +116,35 @@ public class MailService {
     }
 
     private void send(String to, String subject, String html) {
-        if (!enabled) {
+        if (usesBrevo()) {
+            sendWithBrevo(to, subject, html);
+        } else if (smtpEnabled) {
+            sendWithSmtp(to, subject, html);
+        } else {
             log.info("Mail is disabled, skipping \"{}\"", subject);
-            return;
         }
+    }
+
+    /** Brevo's API runs over HTTPS, so it works on hosts that block SMTP ports, like Render's free plan. */
+    private void sendWithBrevo(String to, String subject, String html) {
+        Map<String, Object> message = Map.of(
+                "sender", Map.of("name", "Sole&Seam", "email", from),
+                "to", List.of(Map.of("email", to)),
+                "subject", subject,
+                "htmlContent", html);
+        try {
+            brevo.post()
+                    .header("api-key", brevoApiKey)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(message)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (RestClientException e) {
+            log.error("Could not send \"{}\": {}", subject, e.getMessage());
+        }
+    }
+
+    private void sendWithSmtp(String to, String subject, String html) {
         try {
             MimeMessage message = sender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");

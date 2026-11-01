@@ -52,7 +52,17 @@ Limits of Render's free plan:
 
 - The service sleeps after 15 minutes without traffic, and the next visit takes about a minute to wake it.
 - The free database **expires 30 days after creation** and is deleted 14 days later unless upgraded. A workspace can have only one.
-- Outbound SMTP is blocked, so email stays off and new accounts are active immediately. To send email, use a paid instance and set `MAIL_ENABLED=true` with the `MAIL_*` variables.
+- Outbound SMTP is blocked, so email goes through Brevo's HTTPS API instead.
+
+## Email confirmation
+
+Without email set up, new accounts are active immediately. To turn on confirmation emails and order receipts:
+
+1. Create a free [Brevo](https://www.brevo.com) account and verify your sender address under **Senders**.
+2. Create an API key under **SMTP & API > API Keys**.
+3. Set `BREVO_API_KEY` and `MAIL_FROM` (the verified sender) on the service.
+
+New accounts must then confirm their email before signing in. Existing accounts that never confirmed get a fresh link when they next sign in.
 
 ## Before taking real payments
 
