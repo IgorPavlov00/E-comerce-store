@@ -1,77 +1,45 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HerobannerComponent } from './herobanner/herobanner.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { FeatureComponent } from './feature/feature.component';
-import { ProductsComponent } from './products/products.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import { BrandComponent } from './brand/brand.component';
-import { FooterComponent } from './footer/footer.component';
-import { DetailsComponent } from './details/details.component';
 import { AppRoutingModule } from './app-routing.module';
-import {RouterModule} from "@angular/router";
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { Location } from '@angular/common';
-import { LoginRegisterComponent } from './login-register/login-register.component';
-import {ConfirmComponent} from "./confirm/confirm.component";
-import {VerifyComponent} from "./verify/verify.component";
-import {OtherComponent} from "./other/other.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { BrowseComponent } from './browse/browse.component';
-
-import {ToastrModule} from "ngx-toastr";
-import { NotifierComponent } from './notifier/notifier.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { NgxMasonryModule } from 'ngx-masonry';
-import { CardGridComponent } from './card-grid/card-grid.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CartService } from './cart.service';
-
+import { AppComponent } from './app.component';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { FooterComponent } from './layout/footer.component';
+import { NavbarComponent } from './layout/navbar.component';
+import { ToastsComponent } from './layout/toasts.component';
+import { AccountComponent } from './pages/account.component';
+import { CartComponent } from './pages/cart.component';
+import { HomeComponent } from './pages/home.component';
+import { LoginComponent } from './pages/login.component';
+import { OrderSuccessComponent } from './pages/order-success.component';
+import { ProductComponent } from './pages/product.component';
+import { ShopComponent } from './pages/shop.component';
+import { ConfirmComponent, NotFoundComponent, VerifyComponent } from './pages/status-pages.component';
+import { CentsPipe } from './shared/cents.pipe';
+import { ProductCardComponent } from './shared/product-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HerobannerComponent,
-    CategoriesComponent,
-    FeatureComponent,
-    ProductsComponent,
-    BrandComponent,
     FooterComponent,
-    DetailsComponent,
-    LandingPageComponent,
-
-    LoginRegisterComponent,
-    ConfirmComponent,
+    ToastsComponent,
+    ProductCardComponent,
+    CentsPipe,
+    HomeComponent,
+    ShopComponent,
+    ProductComponent,
+    CartComponent,
+    LoginComponent,
+    AccountComponent,
+    OrderSuccessComponent,
     VerifyComponent,
-    OtherComponent,
-    BrowseComponent,
-    NotifierComponent,
-    CardGridComponent,
-    ShoppingCartComponent,
-
-
-
+    ConfirmComponent,
+    NotFoundComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        RouterModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot(), // ToastrModule added
-         NgxMasonryModule
-
-
-
-    ],
-  providers: [Location, CartService], // Corrected the providers array
-
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

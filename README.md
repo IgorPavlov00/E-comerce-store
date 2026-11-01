@@ -1,54 +1,61 @@
-# 🛍️ E-commerce Store  
+# Sole&Seam
 
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=spring&logoColor=white)](https://spring.io/)
-[![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
-[![Stripe](https://img.shields.io/badge/Stripe-008CDD?style=flat&logo=stripe&logoColor=white)](https://stripe.com/)
+A sneaker and denim store built with Angular, Spring Boot, PostgreSQL and Stripe Checkout.
 
-A full-stack e-commerce platform featuring fashion products with secure payment processing.
+Spring Boot serves both the API (under `/api`) and the built Angular app, so the whole store deploys as one service.
 
----
+## Features
 
-## 🌟 Features  
-- **👟 Product Catalog**: Detailed listings with images, sizes, and prices  
-- **🛒 Shopping Cart**: Persistent cart functionality across sessions  
-- **💳 Secure Payments**: Stripe integration for transaction processing  
-- **📦 Inventory Management**: Size availability tracking  
-- **🔐 User Authentication**: Secure login and account management  
+- Catalog with search, category, brand, colour and price filters, plus sorting
+- Cart saved in the browser, with free shipping from $150
+- Stripe Checkout for guests and signed-in customers. Prices are always read from the database, never from the browser.
+- Accounts with hashed passwords, token sign-in and order history
+- Optional email confirmation and order receipts
 
----
+## Run it locally
 
-## 🛠️ Tech Stack  
-**Frontend**  
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)  
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)  
+You need Java 17, Node 18 and PostgreSQL. Create a database called `Ecomerce`; tables and products are created on first start.
 
-**Backend**  
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=spring&logoColor=white)  
+Backend, on port 8084. The variables are listed in [.env.example](.env.example):
 
-**Database**  
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)  
+```bash
+cd ecomerce
+DB_PASSWORD=your-password STRIPE_SECRET_KEY=sk_test_... ./mvnw spring-boot:run
+```
 
-**Payment Processing**  
-![Stripe](https://img.shields.io/badge/Stripe-008CDD?style=flat&logo=stripe&logoColor=white)  
+Frontend, on port 4200, which forwards `/api` to the backend:
 
----
+```bash
+cd front
+npm ci
+npm start
+```
 
-## 📸 Screenshots  
-| Landing Page | Product Page |  
-|-----------------|---------------|  
-| ![Product Listing](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/2f53a6d0-949a-4b80-abd8-27701c5d96b8) | ![Checkout](https://github.com/IgorPavlov00/E-comerce-store/assets/103071674/ea9564d5-14e8-423c-a2e9-7b3d5794fbac) |  
+To pay in test mode, use card `4242 4242 4242 4242` with any future date and any CVC.
 
----
+## Tests
 
-## 🏁 Getting Started  
+```bash
+cd ecomerce && ./mvnw test   # uses an in-memory database
+cd front && npm test         # needs Chrome
+```
 
-### Prerequisites  
-- Java 17+  
-- PostgreSQL 14+  
-- Angular CLI  
+## Deploy to Render
 
-### Installation  
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/IgorPavlov00/E-comerce-store.git  
-   cd E-comerce-store  
+[render.yaml](render.yaml) defines the web service and its database.
+
+1. In Render, choose **New > Blueprint** and connect this repository.
+2. Enter your Stripe test secret key when asked for `STRIPE_SECRET_KEY`.
+3. Apply. The first build takes several minutes.
+
+Limits of Render's free plan:
+
+- The service sleeps after 15 minutes without traffic, and the next visit takes about a minute to wake it.
+- The free database **expires 30 days after creation** and is deleted 14 days later unless upgraded. A workspace can have only one.
+- Outbound SMTP is blocked, so email stays off and new accounts are active immediately. To send email, use a paid instance and set `MAIL_ENABLED=true` with the `MAIL_*` variables.
+
+## Before taking real payments
+
+The site footer and cart describe the store as a test-mode demo. Update that text in `front/src/app/layout/footer.component.ts` and `front/src/app/pages/cart.component.ts` when you switch to a live Stripe key.
+
+Orders are marked paid when the customer returns from Stripe. A customer who closes the tab before that stays `PENDING`, so add a Stripe webhook before relying on this for real orders.

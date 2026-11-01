@@ -1,62 +1,30 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HerobannerComponent } from './herobanner/herobanner.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { FeatureComponent } from './feature/feature.component';
-import { ProductsComponent } from './products/products.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import { BrandComponent } from './brand/brand.component';
-import { FooterComponent } from './footer/footer.component';
-import { DetailsComponent } from './details/details.component';
-import {RouterModule, Routes} from '@angular/router';
-import {LandingPageComponent} from "./landing-page/landing-page.component";
-import {LoginRegisterComponent} from "./login-register/login-register.component";
-import {VerifyComponent} from "./verify/verify.component";
-import {OtherComponent} from "./other/other.component";
-import {BrowseComponent} from "./browse/browse.component";
-import { ConfirmComponent } from './confirm/confirm.component';
-import {NotifierComponent} from "./notifier/notifier.component";
-import {CardGridComponent} from "./card-grid/card-grid.component";
-import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
-
-
-
-
+import { RouterModule, Routes } from '@angular/router';
+import { signedInGuard } from './core/auth.guard';
+import { AccountComponent } from './pages/account.component';
+import { CartComponent } from './pages/cart.component';
+import { HomeComponent } from './pages/home.component';
+import { LoginComponent } from './pages/login.component';
+import { OrderSuccessComponent } from './pages/order-success.component';
+import { ProductComponent } from './pages/product.component';
+import { ShopComponent } from './pages/shop.component';
+import { ConfirmComponent, NotFoundComponent, VerifyComponent } from './pages/status-pages.component';
 
 const routes: Routes = [
-  {
-
-    path: '', component: LandingPageComponent
-
-  },
-  {
-  path: 'details/:type/:id', component: DetailsComponent
-  },
-  {
-    path: 'login', component: LoginRegisterComponent
-  },
-
-  {
-    path: 'verify', component: VerifyComponent
-  },
-  {
-    path: 'other', component:OtherComponent
-  },
-  {
-    path: 'browse', component:BrowseComponent
-  },
-  { path: 'confirm', component: ConfirmComponent },
-  { path:'cart',component:ShoppingCartComponent},
-
-
+  { path: '', component: HomeComponent, title: 'Sole&Seam | Sneakers and denim' },
+  { path: 'shop', component: ShopComponent, title: 'Shop | Sole&Seam' },
+  { path: 'product/:type/:id', component: ProductComponent, title: 'Sole&Seam' },
+  { path: 'cart', component: CartComponent, title: 'Your cart | Sole&Seam' },
+  { path: 'login', component: LoginComponent, title: 'Sign in | Sole&Seam' },
+  { path: 'verify', component: VerifyComponent, title: 'Check your email | Sole&Seam' },
+  { path: 'confirm', component: ConfirmComponent, title: 'Confirm your email | Sole&Seam' },
+  { path: 'order/success', component: OrderSuccessComponent, title: 'Order confirmed | Sole&Seam' },
+  { path: 'account', component: AccountComponent, canActivate: [signedInGuard], title: 'Account | Sole&Seam' },
+  { path: '**', component: NotFoundComponent, title: 'Page not found | Sole&Seam' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

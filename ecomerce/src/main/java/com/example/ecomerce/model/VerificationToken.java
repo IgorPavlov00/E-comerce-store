@@ -1,17 +1,28 @@
 package com.example.ecomerce.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 
-
 @Entity
+@Getter
+@NoArgsConstructor
 @Table(name = "verification_token")
 public class VerificationToken {
 
-    private static final int EXPIRATION = 60 * 24;
+    private static final Duration LIFETIME = Duration.ofHours(24);
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,61 +35,17 @@ public class VerificationToken {
 
     private Date expiryDate;
 
-    public VerificationToken() {
-    }
-
     public VerificationToken(String token, User user) {
-        this.token = token;
         this.user = user;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
+        renew(token);
     }
 
-    public void updateToken(String token) {
-        this.token = token;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
+    public final void renew(String newToken) {
+        this.token = newToken;
+        this.expiryDate = Date.from(Instant.now().plus(LIFETIME));
     }
 
     public boolean isExpired() {
-        return new Date().after(this.expiryDate);
-    }
-
-    private Date calculateExpiryDate(int expiryTimeInMinutes) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime().getTime()));
-        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(cal.getTime().getTime());
+        return new Date().after(expiryDate);
     }
 }

@@ -1,0 +1,23 @@
+{
+  "shoes": [
+    {"name":"Air 1 Jordan Mid","description":"Smokey Grey","brand":"Jordan","size":"42","color":"Grey","price":95.00,"image":"jordan-1-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"University Blue","brand":"Jordan","size":"44","color":"Blue","price":80.00,"image":"jordan-2-blue-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"Origin Story","brand":"Jordan","size":"43","color":"Red","price":100.00,"image":"jordan-3-red-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"Shattered Backboard","brand":"Jordan","size":"44.5","color":"Black/Orange/White","price":180.00,"image":"jordan-shattered-backboard-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"Shadow","brand":"Jordan","size":"42","color":"Black/Grey","price":160.00,"image":"jordan-shadow-removebg-preview.png"},
+    {"name":"Air 1 Jordan Mid","description":"Pine Green","brand":"Jordan","size":"43","color":"Black/Green/White","price":140.00,"image":"jordan-pine-green-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"Pollen","brand":"Jordan","size":"42.5","color":"Black/Yellow","price":130.00,"image":"jorda-royal-removebg-preview.png"},
+    {"name":"Air 1 Jordan High","description":"Chicago Reimagined","brand":"Jordan","size":"43","color":"Red/White","price":180.00,"image":"chicago-jordans-removebg-preview.png"}
+  ],
+  "jeans": [
+    {"name":"Levi's Khaki Straight","description":"Stylish khaki five-pocket","brand":"Levi's","size":"30","color":"Khaki","price":80.00,"image":"levis-30-khaki.jpg"},
+    {"name":"Levi's Utility Taper","description":"Tapered fit with cargo pockets","brand":"Levi's","size":"31","color":"Black","price":90.00,"image":"levis-31-taper.jpg"},
+    {"name":"Levi's Cargo","description":"Relaxed cargo style","brand":"Levi's","size":"32","color":"Green","price":95.00,"image":"levis-32-cargo.jpg"},
+    {"name":"Levi's Cargo Taper","description":"Cargo style with a tapered leg","brand":"Levi's","size":"32","color":"Olive","price":100.00,"image":"levis-32-cargo-taper.jpg"},
+    {"name":"Levi's Corduroy","description":"Soft corduroy texture","brand":"Levi's","size":"32","color":"Brown","price":85.00,"image":"levis-32-corduroy.jpg"},
+    {"name":"Levi's Hybrid Cargo","description":"Hybrid cargo style","brand":"Levi's","size":"32","color":"Black","price":95.00,"image":"levis-32-hybrid-cargo.jpg"},
+    {"name":"Oversize Denim","description":"Roomy oversized fit","brand":"Denim","size":"38","color":"Blue","price":90.00,"image":"denim-38-oversize.jpg"},
+    {"name":"Slim Fit Denim","description":"Light wash, slim through the leg","brand":"Denim","size":"32","color":"Blue","price":85.00,"image":"denim-32-fit.jpg"},
+    {"name":"Diesel Grey","description":"Washed grey with a slim leg","brand":"Diesel","size":"34","color":"Grey","price":95.00,"image":"diesel_34_grey.jpg"}
+  ]
+}

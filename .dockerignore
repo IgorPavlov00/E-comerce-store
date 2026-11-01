@@ -1,0 +1,7 @@
+.git
+.env
+**/node_modules
+**/dist
+**/.angular
+**/target
+ecomerce/src/main/resources/static
