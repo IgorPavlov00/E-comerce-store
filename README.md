@@ -4,6 +4,20 @@ A sneaker and denim store built with Angular, Spring Boot, PostgreSQL and Stripe
 
 Spring Boot serves both the API (under `/api`) and the built Angular app, so the whole store deploys as one service.
 
+**Live demo:** https://sole-seam.onrender.com (the free server can take about a minute to wake up)
+
+![Sole&Seam home page](docs/screenshots/home.jpg)
+
+## Screenshots
+
+| Shop | Product |
+|---|---|
+| ![Shop page with filters](docs/screenshots/shop.jpg) | ![Product page](docs/screenshots/product.jpg) |
+
+| Cart | Phone |
+|---|---|
+| ![Cart with order summary](docs/screenshots/cart.jpg) | <img src="docs/screenshots/mobile-home.jpg" alt="Home page on a phone" width="180"> <img src="docs/screenshots/mobile-shop.jpg" alt="Shop page on a phone" width="180"> |
+
 ## Features
 
 - Catalog with search, category, brand, colour and price filters, plus sorting
